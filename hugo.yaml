@@ -1,0 +1,39 @@
+baseURL: 'https://www.your-domain.com/' # 最终换成你的域名
+languageCode: 'zh-cn'
+title: 'Your_Hugo'
+theme: 'papermod'
+
+menu:
+  main:
+    - name: Study Notes # 菜单显示名
+      url: "/notes/"   # 链接到 content/notes/ 文件夹
+      weight: 10       # 排序权重，数字越小越靠前
+    - name: Musings
+      url: "/musings/"
+      weight: 20
+
+
+# 主题参数，用于控制功能
+params:
+  ShowShareButtons: true
+  ShowReadingTime: true
+  ShowPostNavLinks: true
+  ShowCodeCopyButtons: true
+  
+  # 开启目录功能的全局开关
+  ShowToc: true
+  TocOpen: true # 让目录默认展开
+
+  # 开启 KaTeX 数学公式渲染的全局开关
+  math: true
+
+# Markdown 渲染器配置
+markup:
+  goldmark:
+    renderer:
+      # 必须开启，允许 KaTeX 和 HTML 标签通过
+      unsafe: true
+  tableOfContents:
+    startLevel: 2  # 目录从 ## (h2) 开始
+    endLevel: 3    # 目录到 ### (h3) 结束
+    ordered: false # 目录使用无序列表
