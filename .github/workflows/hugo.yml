@@ -30,4 +30,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public # Hugo 生成的静态文件目录
           force_orphan: true
-          publish_branch: main # 可以指定发布分支，不指定默认为 gh-pages
+          publish_branch: gh-pages # 可以指定发布分支，不指定默认为 gh-pages
