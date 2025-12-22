@@ -1,39 +1,42 @@
-baseURL: 'https://www.your-domain.com/' # 最终换成你的域名
-languageCode: 'zh-cn'
-title: 'Your_Hugo'
-theme: 'papermod'
+baseURL: "https://damonfan3964-github-io.vercel.app/"
+title: "Damon不呆萌"
+languageCode: "zh-CN"
+hasCJKLanguage: true
+theme: "PaperMod"
 
 menu:
   main:
-    - name: Study Notes # 菜单显示名
-      url: "/notes/"   # 链接到 content/notes/ 文件夹
-      weight: 10       # 排序权重，数字越小越靠前
-    - name: Musings
-      url: "/musings/"
-      weight: 20
+    - name: "所有文章"
+      url: "/posts/"
+      weight: 1
+    - name: "分类"
+      url: "/categories/"
+      weight: 2
+    - name: "标签"
+      url: "/tags/"
+      weight: 3
+    - name: "关于"
+      url: "/about/"
+      weight: 4
 
-
-# 主题参数，用于控制功能
 params:
-  ShowShareButtons: true
-  ShowReadingTime: true
-  ShowPostNavLinks: true
+  # 首页欢迎语
+  homeInfoParams:
+    Title: "Damon"
+    Content: "Keep Learning Keep Exploring Keep Thinking"
+
+  # 文章功能开关
+  ShowToc: true          # 开启目录
+  TocOpen: true         # 目录默认展开
   ShowCodeCopyButtons: true
-  
-  # 开启目录功能的全局开关
-  ShowToc: true
-  TocOpen: true # 让目录默认展开
+  ShowReadingTime: true
+  math: true            # 开启数学公式标记支持
 
-  # 开启 KaTeX 数学公式渲染的全局开关
-  math: true
-
-# Markdown 渲染器配置
+# 渲染器配置：保证目录层级正确
 markup:
   goldmark:
     renderer:
-      # 必须开启，允许 KaTeX 和 HTML 标签通过
-      unsafe: true
+      unsafe: true # 允许在 Markdown 中使用简单的 HTML 标签
   tableOfContents:
-    startLevel: 2  # 目录从 ## (h2) 开始
-    endLevel: 3    # 目录到 ### (h3) 结束
-    ordered: false # 目录使用无序列表
+    startLevel: 2
+    endLevel: 4
