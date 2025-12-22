@@ -2,7 +2,7 @@ baseURL: "https://damonfan3964-github-io.vercel.app/"
 title: "Damon不呆萌"
 languageCode: "zh-CN"
 hasCJKLanguage: true
-theme: "PaperMod"
+theme: "papermod"
 
 menu:
   main:
