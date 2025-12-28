@@ -6,6 +6,7 @@
       {
         "id": "73a41efb0acd1cbf",
         "type": "tabs",
+        "dimension": 66.8241965973535,
         "children": [
           {
             "id": "ce5bcd7c8657f66e",
@@ -13,12 +14,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "通信原理.md",
+                "file": "index.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "通信原理"
+              "title": "index"
             }
           }
         ]
@@ -26,6 +27,7 @@
       {
         "id": "e97d145e65ed3066",
         "type": "tabs",
+        "dimension": 33.1758034026465,
         "children": [
           {
             "id": "7bb02b28cc47c96c",
@@ -33,13 +35,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "通信原理.md",
+                "file": "index.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "通信原理 的大纲"
+              "title": "index 的大纲"
             }
           }
         ]
@@ -204,15 +206,23 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "ce5bcd7c8657f66e",
+  "active": "c8a1ec5c5f19b511",
   "lastOpenFiles": [
-    "SSB调制.png",
-    "SSB滤波.png",
-    "包络调制频谱.png",
-    "DSB调制.png",
-    "通信原理.md",
-    "AM相干解调.png",
-    "包络调制.png",
-    "Pasted image 20251225201007.png"
+    "限带WGN传输.png",
+    "奈奎斯特.png",
+    "rect.png",
+    "rcos.png",
+    "AWGN传输.png",
+    "NRZ.png",
+    "PAM产生.png",
+    "index.md",
+    "简单数字基带传输.png",
+    "通信电路.md",
+    "门限效应.png",
+    "().md",
+    "包络调制信噪比.png",
+    "Pasted image 20251228171611.png",
+    "维纳-辛钦定理.md",
+    "通信原理.md"
   ]
 }
