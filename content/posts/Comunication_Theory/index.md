@@ -1,11 +1,12 @@
 ---
-title: 大三上通信原理知识点
+title: 通信原理知识点
 date: 2025-12-25T10:00:00+08:00
 draft: false
 summary: 通信原理期末复习知识点汇总与思考
 tags:
   - 大三上
   - 通信
+  - 期末复习
 categories:
   - 笔记
 Toc: true
