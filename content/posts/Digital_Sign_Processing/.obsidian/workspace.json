@@ -56,19 +56,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "7d5bcba8405a7251",
-            "type": "leaf",
-            "state": {
-              "type": "file-explorer",
-              "state": {
-                "sortOrder": "alphabetical",
-                "autoReveal": false
-              },
-              "icon": "lucide-folder-closed",
-              "title": "文件列表"
-            }
-          },
-          {
             "id": "32396a0634c4e4a9",
             "type": "leaf",
             "state": {

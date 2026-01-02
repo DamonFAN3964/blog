@@ -6,7 +6,6 @@
       {
         "id": "73a41efb0acd1cbf",
         "type": "tabs",
-        "dimension": 66.8241965973535,
         "children": [
           {
             "id": "ce5bcd7c8657f66e",
@@ -25,12 +24,11 @@
         ]
       },
       {
-        "id": "e97d145e65ed3066",
+        "id": "ce182bd301ec9ed9",
         "type": "tabs",
-        "dimension": 33.1758034026465,
         "children": [
           {
-            "id": "7bb02b28cc47c96c",
+            "id": "c77447df5a9ed821",
             "type": "leaf",
             "state": {
               "type": "outline",
@@ -117,7 +115,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "通信原理.md",
+                "file": "index.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,36 +125,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "通信原理 的反向链接列表"
-            }
-          },
-          {
-            "id": "4e26d8d318c9a4d1",
-            "type": "leaf",
-            "state": {
-              "type": "outgoing-link",
-              "state": {
-                "file": "通信原理.md",
-                "linksCollapsed": false,
-                "unlinkedCollapsed": true
-              },
-              "icon": "links-going-out",
-              "title": "通信原理 的出链列表"
-            }
-          },
-          {
-            "id": "3f96324dd8c52219",
-            "type": "leaf",
-            "state": {
-              "type": "tag",
-              "state": {
-                "sortOrder": "frequency",
-                "useHierarchy": true,
-                "showSearch": false,
-                "searchQuery": ""
-              },
-              "icon": "lucide-tags",
-              "title": "标签"
+              "title": "index 的反向链接列表"
             }
           },
           {
@@ -187,8 +156,38 @@
               "icon": "lucide-list",
               "title": "通信原理 的大纲"
             }
+          },
+          {
+            "id": "13286854120f1c20",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "index.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "index 的出链列表"
+            }
+          },
+          {
+            "id": "e7784faf2bc6bafc",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -206,22 +205,22 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "c8a1ec5c5f19b511",
+  "active": "ce5bcd7c8657f66e",
   "lastOpenFiles": [
-    "限带WGN传输.png",
-    "奈奎斯特.png",
-    "rect.png",
-    "rcos.png",
-    "AWGN传输.png",
-    "NRZ.png",
-    "PAM产生.png",
+    "OOK信号发送框图.png",
+    "OOK信号.png",
+    "OOK包络检波.png",
     "index.md",
-    "简单数字基带传输.png",
+    "2FSK包络检波.png",
+    "2FSK相干解调.png",
+    "2FSK信号.png",
+    "2FSK带宽.png",
+    "2FSK发送框图.png",
+    "DPSK相干解调.png",
+    "差分相干解调.png",
+    "DPSK信号.png",
     "通信电路.md",
-    "门限效应.png",
     "().md",
-    "包络调制信噪比.png",
-    "Pasted image 20251228171611.png",
     "维纳-辛钦定理.md",
     "通信原理.md"
   ]
