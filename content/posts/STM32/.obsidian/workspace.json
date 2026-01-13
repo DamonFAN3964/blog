@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "index.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
@@ -183,7 +183,7 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "a6bfc8b993e5be16",
+  "active": "f4327d2d9f1520b9",
   "lastOpenFiles": [
     "状态机.png",
     "GPIO输出.png",
