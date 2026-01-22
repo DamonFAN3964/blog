@@ -62,7 +62,6 @@ params:
     
   ShowToc: true         
   TocOpen: true         
-  ShowCodeCopyButtons: true
   ShowReadingTime: true
   math: true       
   assets:
