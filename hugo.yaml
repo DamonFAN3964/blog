@@ -4,6 +4,22 @@ languageCode: "zh-CN"
 hasCJKLanguage: true
 theme: "papermod"
 
+enableSearch: true  
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON  
+  page:
+    - HTML
+  section:
+    - HTML
+    - RSS
+
+pagination:
+  pagerSize: 10  
+  path: "page"    
+
 menu:
   main:
     - name: "所有文章"
@@ -15,28 +31,50 @@ menu:
     - name: "标签"
       url: "/tags/"
       weight: 3
-    - name: "关于"
-      url: "/about/"
+    - name: "搜索"
+      url: "/search/"
       weight: 4
 
 params:
-  # 首页欢迎语
   homeInfoParams:
     Title: "Damon"
     Content: "Keep Learning Keep Exploring Keep Thinking"
+  
+  ShowBreadCrumbs: true
+  ShowPostNavLinks: true
+  ShowCodeCopyButtons: true
+  ShowShareButtons: true
+  ShareButtons: ["x", "facebook", "reddit", "telegram"] 
+  
+  profileMode:
+    enabled: true
+    title: "Damon不呆萌's home" 
+    subtitle: "习惯性自律即自由！"
+    buttons:
+      - name: Github
+        url: "https://github.com/DamonFAN3964"
 
-  # 文章功能开关
-  ShowToc: true          # 开启目录
-  TocOpen: true         # 目录默认展开
+  list:
+    view: "list"  
+    showViewSwitch: true 
+    showPagination: true  
+    paginationSize: 5    
+    
+  ShowToc: true         
+  TocOpen: true         
   ShowCodeCopyButtons: true
   ShowReadingTime: true
-  math: true            # 开启数学公式标记支持
+  math: true       
+  assets:
+    favicon: "/favicon.ico" 
+    disableHLJS: false       
 
-# 渲染器配置：保证目录层级正确
 markup:
   goldmark:
     renderer:
-      unsafe: true # 允许在 Markdown 中使用简单的 HTML 标签
+      unsafe: true 
   tableOfContents:
     startLevel: 2
     endLevel: 4
+
+staticDir: "static"
