@@ -51,7 +51,7 @@ bool next_permutation (BidirectionalIterator first, BidirectionalIterator last);
 >     本题的区别在于分支由**子节点->向左向下两个方向**、**多了拿/不拿两个子状态**、**终止条件为统计符合条件的路径数量**
 >    这必然会导致重复统计会超时（**时间复杂度为$2^{m+n}$**），故引入记忆化搜索（**核心就是多了个memo来储存之前走过的路径**）
 - 暴力DFS
-```
+```cpp
 void DFS(x, y, max, num)
 {
   //边界条件
@@ -97,7 +97,7 @@ void DFS(x, y, max, num)
 - 基本逻辑：不断**进入退回**，记录所有分岔路的信息（利用队列，先进先出）
 - 板子：（BFS 是迭代实现，适合节点数多的场景，避免 **DFS 递归栈溢出**问题）
 
-```
+```cpp
 // 邻接表：adj[u] 存储 {v, w}，v是邻接点，w是边权
 vector<pair<int, int>> adj[100];
 int dist[100]; // 存储每个节点到起点的距离
@@ -169,7 +169,7 @@ int main() {
 ### DFS（递归+终止）
 - 基本逻辑：一条路走到底（**递归**），走不通往回退走另一条（**回溯**）（利用栈，先进后出）
 - 板子
-```
+```cpp
 // DFS递归函数：遍历u的所有邻边，更新距离 
 void dfs(int u, int parent) 
 { // parent避免走回父节点 
@@ -222,7 +222,7 @@ $$tree[x]=\sum_{i=x-lowbit(x)+1}^{x}num(i)$$
 **其中$lowbit$是一个数二进制分解的最小次幂且其数值等于对于树状数组单元的区间长度**。如$$tree(4)=\sum[1,4]$$
 $$length[tree(4)]=4=lowbit(4)$$
 - 查询前缀和：实质上是在不断**减去lowbit**，直到求和覆盖所有不重叠子区间。
-```
+```cpp
 int ask(int x)
 {
     int ans = 0;
@@ -231,7 +231,7 @@ int ask(int x)
 }
 ```
 - 单点增加：实质上是不断**加上**lowbit，直到每个含有这个元素的tree都能加上这个值。
-```
+```cpp
 void add(int x,int y)
 {
     for(;x<=N;x+=x&-x) tree[x]+=y;
@@ -245,7 +245,7 @@ void add(int x,int y)
 >⭐lower_bound函数 $lower_bound(起始地址, 结束地址, 目标值)$;**寻找升序排列的下标**
 
   2. 逆序遍历时查询前缀和（**记录右侧已遍历元素中比当前元素小的数量**）和单点增加（**每个逆序对的两个元素统计数目加1**）
-```
+```cpp
 for(int i = n; i; i--)
 {
     ans += ask(num[i]-1);
@@ -272,7 +272,7 @@ for(int i = n; i; i--)
 $$dp[0][0]=0 （dp[i][j] 表示第i步时的加权和）$$
 $$dp[i][j]=dp[i-1][j-a·i]+dp[i-1][j+b·i]$$
 $$s\%n=j\%n$$
-```
+```cpp
 #include <bits/stdc++.h>
 using namespace std;
 #define mod 100000007
