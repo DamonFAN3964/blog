@@ -165,12 +165,12 @@
               "title": "index 的大纲"
             }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -183,6 +183,11 @@
       "bases:新建数据库": false
     }
   },
-  "active": "f336bf430bcb471d",
-  "lastOpenFiles": []
+  "active": "e980ca15542f2c74",
+  "lastOpenFiles": [
+    "LED.png",
+    "index.md",
+    "key.png",
+    "16s.png"
+  ]
 }

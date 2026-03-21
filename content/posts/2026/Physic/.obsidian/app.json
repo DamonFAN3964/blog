@@ -1,4 +1,5 @@
 {
+  "promptDelete": false,
   "pdfExportSettings": {
     "pageSize": "Letter",
     "landscape": false,

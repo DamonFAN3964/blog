@@ -254,7 +254,7 @@ for(int i = n; i; i--)
 ```
 # 归并排序
 
-# 动态规划DP
+# 普通动态规划DP
 
 - DP的主要**三步**：
 1. **定义状态**：明确 `dp[i]`（或 `dp[i][j]`）代表什么含义
@@ -297,3 +297,46 @@ int main() {
 
 ## 垒骰子+矩阵乘法/数（矩阵）的快速幂[p8624]
 
+# 树形DP
+
+>💡树形DP的核心是要抓住**树的递归**这一特点来找状态转移方程。
+>     假设$dp_u$是以$u$为根节点下的最大加权和，那么如果它的一个子节点$v$的最大加权和$dp_v$大于0那就递归加上，否则就不加（一共就两种状态）。
+>     
+>     故状态转移方程为：$$dp_u = a_u +max\{dp_v,0\}$$
+
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+int n;
+int a[100005]; // 每个点的点权
+long long dp[100005]; // 注意开 long long
+vector<int> adj[100005]; // 邻接表存储（⭐这是定义了一个长度为100005的数组，其中每个元素又是一个数据类型为vector<int>的动态列表。）
+
+void dfs(int u, int fa) {
+	dp[u] = a[u];//初始赋值（结点本身的权重）
+	for(int v : adj[u]) {
+		if(v == fa) continue;//检查是否是已经访问过的父节点，如果是那么就不再走回头路
+		dfs(v, u);
+		dp[u] += max(dp[v], 0ll);
+	}
+   // 状态转移方程
+}
+
+int main() {
+	scanf("%d", &n);
+	for(int i = 1; i <= n; i++) 
+		scanf("%d", &a[i]);
+	for(int i = 1, u, v; i < n; i++) {
+		scanf("%d%d", &u, &v);
+		adj[u].push_back(v);
+		adj[v].push_back(u);
+	}
+	dfs(1, 0);
+	printf("%lld", max(*max_element(dp + 1, dp + n + 1), 0ll)); // 输出答案。
+	return 0;
+}
+
+```
+其中$max(*max_element(dp + 1, dp + n + 1)$是STL算法库中计算**一个区间内的最大值**，输入参数为指针（注意区间是**左闭右开**！）

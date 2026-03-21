@@ -1,5 +1,5 @@
 {
-  "outline:open": [
+  "outline:open-for-current": [
     {
       "modifiers": [
         "Mod"
@@ -7,7 +7,6 @@
       "key": "Q"
     }
   ],
-  "command-palette:open": [],
   "workspace:export-pdf": [
     {
       "modifiers": [
@@ -15,5 +14,6 @@
       ],
       "key": "P"
     }
-  ]
+  ],
+  "command-palette:open": []
 }
