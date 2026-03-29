@@ -266,9 +266,9 @@ void led_show(uint8_t led, uint8_t mode)
 
 >💡本题使用TIM2作为输入捕获、TIM17作为PWM输出、TIM3作为时钟。基本步骤为在main.c中调用配置函数，fun.c中编写回调函数（在CUBEMX中配置时要注意不要选择TIM7/8高级定时器）
 >
->1. PWM模式下**预分频系数PSC为800-1，自动重载值ARR为100-1**（这样的好处在于STM32G431RBT6的主频为80MHz，分频下来为**1ms/1kHz**且**占空比的值**就为**计数器CCR**的值。
->2. 输入捕获模式下**预分频系数PSC为80-1，自动重载值ARR不用改**，这样频率$f=1000000/(TIM->CCR1 +1)$，周期$T = 1000000/f$（✨记得CNT清零）
->3. 计时器模式下**预分频系数PSC为800-1，自动重载值ARR为100-1**，这样计时单位为**1ms**（✨记得清零）
+>1. PWM模式下**预分频系数PSC为800-1，自动重载值ARR为100-1**（这样的好处在于STM32G431RBT6的主频为80MHz，分频下来为**1ms/1kHz**且**占空比的值**就为**计数器CCR**的值。（⭐不用配置中断）
+>2. 输入捕获模式下**预分频系数PSC为80-1，自动重载值ARR不用改**，这样频率$f=1000000/(TIM->CCR1 +1)$，周期$T = 1000000/f$（✨**记得CNT清零**）（⭐配置中断）
+>3. 计时器模式下**预分频系数PSC为800-1，自动重载值ARR为100-1**，这样计时单位为**1ms**（✨记得清零）（⭐配置中断）
 
 ```c
 void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
@@ -361,12 +361,100 @@ uint8_t  eeprom_read(uint8_t address)
 
 ```
 
-## 8. I2C串口
+## 8. I2C
 
 >⭐16届模拟题1找了很久的问题：为什么工程代码与满分工程一模一样，**但是就是页面跳转不了**（输入正确密码下），最后才发现是**CubeMX中I2C的SCL和SDA（PB6和PB7）引脚没有配置**🤣细节决定成败。
 
+## 9. UART
 
+>要实现串口通信，我们选择UART，在**CubeMX配置中，设置异步模式和题目规定的波特率并开启中断**，USATR1_TX和RX分别对应引脚**PA9、PA10**。
 
+```C
+//main.c中的配置函数
+HAL_UART_Receive_IT(&huart1, &uart_data, 1);
+
+//fun.c中的串口处理函数和接收回调函数
+char uart_str[4];
+uint8_t uart_int[3];
+uint8_t uart_indax;
+uint8_t uart_data;
+uint8_t uart_flag;
+void uart_pros(void)
+{
+	if(uart_flag)
+	{
+		if(TIM4->CNT>15)
+		{
+			if(uart_indax == 2)
+			{
+				if(uart_int[0]=='B'&&uart_int[1]=='1')
+				{
+					if(!lcd_mode)
+					{
+						auto_hand ^= 1;
+						time_count = 0;
+					}
+					else lcd_mode = 0;
+				}
+				else if(uart_int[0]=='B'&&uart_int[1]=='2')
+				{
+					if(!lcd_mode)
+					{
+						if(auto_hand)
+						{
+							if(++gear_flag > 3) gear_flag = 1;
+						}
+						time_count = 0;
+					}
+					else lcd_mode = 0;
+				}
+				else if(uart_int[0]=='B'&&uart_int[1]=='3')
+				{
+					if(!lcd_mode)
+					{
+						if(auto_hand)
+						{
+							if(--gear_flag < 1) gear_flag = 3;
+						}
+						time_count = 0;
+					}
+					else lcd_mode = 0;
+				}
+				else
+				{
+					sprintf(uart_str, "NULL");
+					HAL_UART_Transmit(&huart1, (uint8_t *)uart_str, 4, 50);
+					//以阻塞方式发送 `uart_str` 数组里的 4 个字节数据，如果 50ms 内没发送完成，就停止并返回错误。
+				}
+			}
+			else
+			{
+				sprintf(uart_str, "NULL");
+				HAL_UART_Transmit(&huart1, (uint8_t *)uart_str, 4, 50);
+			}
+			for(int i=0;i<uart_indax;i++) uart_str[i] = 0;
+			uart_flag = 0;
+			uart_indax = 0;
+		}
+	}
+}
+
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+	if(huart->Instance == USART1)
+	{
+		TIM4->CNT = 0;
+		uart_flag = 1;
+		time_count = 0;
+		led_flag = 1;
+		uart_int[uart_indax++] = uart_data;
+		HAL_UART_Receive_IT(huart, &uart_data, 1);
+	}
+}
+```
+
+>⭐⭐⭐其中只有TIM3当作定时器（配置PSC = 800-1，ARR为100-1）来用（需要在3s和5s时执行全局中断；而TIM4只是用于串口的**串口超时计数器**（计数寄存器一直加，一有数据发送就清零），不用**设置中断**。（**但是main.c中要写配置函数**！（16_2m出现了问题））（配置PSC = 8000-1，ARR保持65535）
+🤣🤣🤣回调函数看好了是RX不是TX（找了很久为什么串口无效的原因）
 ## 9. 滴答定时器
 
 ⭐在做16届模拟题1的时候，发现自己通过用**定时器TIM4**计时烧录之后出现黑屏死机（而满分工程中调用的**滴答定时器**却不会），后来发现**两个原因**：
@@ -389,3 +477,4 @@ void SysTick_Handler(void)
   /* USER CODE END SysTick_IRQn 1 */
 }
 ```
+# ⭐比赛难点逻辑
