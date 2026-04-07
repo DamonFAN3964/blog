@@ -6,6 +6,7 @@
       {
         "id": "438fcf0abd438068",
         "type": "tabs",
+        "dimension": 70.9731543624161,
         "children": [
           {
             "id": "d48bb7e54fa0dc33",
@@ -25,16 +26,40 @@
             "id": "e9fe5d55fb3ed851",
             "type": "leaf",
             "state": {
-              "type": "release-notes",
+              "type": "markdown",
               "state": {
-                "currentVersion": "1.12.7"
+                "file": "index.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-book-up",
-              "title": "版本说明 1.12.7"
+              "icon": "lucide-file",
+              "title": "index"
             }
           }
         ],
         "currentTab": 1
+      },
+      {
+        "id": "2984507b430ae404",
+        "type": "tabs",
+        "dimension": 29.026845637583893,
+        "children": [
+          {
+            "id": "b32bdd7d5089fb97",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "index.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "index 的大纲"
+            }
+          }
+        ]
       }
     ],
     "direction": "vertical"
@@ -196,6 +221,9 @@
       "bases:新建数据库": false
     }
   },
-  "active": "e9fe5d55fb3ed851",
-  "lastOpenFiles": []
+  "active": "39bafb00b23e1d1b",
+  "lastOpenFiles": [
+    "卫星通信.png",
+    "index.md"
+  ]
 }

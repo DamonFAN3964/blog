@@ -21,6 +21,7 @@ math: true
 
 # ⭐比赛注意事项/小技巧
 
+- **进考场的准备**：配置环境、按要求打包提交文件夹（**准考证号命名**）、一步一步**调错**、学会**举手**、注意**细节**、
 - **工程配置**：注意创建project的**物理路径和逻辑路径**、将头文件加入C/C++的**编译路径**
 - **CUBEMX配置：** 系统时钟选择外部晶振、输入频率为24MHz、优先配置Led引脚**PC8~PC15**和PD2、四个按键引脚**PB0~PB2和PA0**
 
@@ -369,6 +370,8 @@ uint8_t  eeprom_read(uint8_t address)
 
 >要实现串口通信，我们选择UART，在**CubeMX配置中，设置异步模式和题目规定的波特率并开启中断**，USATR1_TX和RX分别对应引脚**PA9、PA10**。
 
+🤣🤣🤣**波特率记得修改为9600!!!（CubeMX初始为115200）**
+
 ```C
 //main.c中的配置函数
 HAL_UART_Receive_IT(&huart1, &uart_data, 1);
@@ -455,11 +458,43 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 
 >⭐⭐⭐其中只有TIM3当作定时器（配置PSC = 800-1，ARR为100-1）来用（需要在3s和5s时执行全局中断；而TIM4只是用于串口的**串口超时计数器**（计数寄存器一直加，一有数据发送就清零），不用**设置中断**。（**但是main.c中要写配置函数**！（16_2m出现了问题））（配置PSC = 8000-1，ARR保持65535）
 🤣🤣🤣回调函数看好了是RX不是TX（找了很久为什么串口无效的原因）
+
+
+>⭐⭐⭐但如果想要发送串口的同时CPU也要工作去执行主循环（**15届模拟1的导航**），那我们需要引入非阻塞方式的DMA发送串口：
+
+```C
+//main.c中的配置函数
+HAL_UARTEx_ReceiveToIdle_DMA(&huart1, (uint8_t *)uart_rx_str, UART_MAX);
+
+//fun.c中的回调函数和发送串口函数
+char uart_tx_str[UART_MAX];
+char uart_rx_str[UART_MAX];
+uint8_t uart_flag;
+
+sprintf(uart_tx_str, "Success\r\n");
+HAL_UART_Transmit_DMA(&huart1, (uint8_t *)uart_tx_str, strlen(uart_tx_str));
+
+void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
+{
+	if(huart -> Instance == USART1)
+	{
+		uart_flag = 1;
+		HAL_UARTEx_ReceiveToIdle_DMA(huart, (uint8_t *)uart_rx_str, UART_MAX);
+	}
+}
+
+// ⭐在bsp_system.h中需要定义和外部声明
+#define UART_MAX 30
+extern char uart_rx_str[UART_MAX];
+```
+
+⭐这一道题也让我学会一个简化代码和思路的方法：**汽车导航的串口不仅是向串口输入字符后的直接输出，还有再执行一定操作（如案件等）才返回的串口字符**，那我们为什么不可以用**隔离法**呢，将一个逻辑链切成两半：把需要输入字符的操作放在串口函数中，其它逻辑操作串口输出放在其他函数。
+
 ## 9. 滴答定时器
 
 ⭐在做16届模拟题1的时候，发现自己通过用**定时器TIM4**计时烧录之后出现黑屏死机（而满分工程中调用的**滴答定时器**却不会），后来发现**两个原因**：
 
-- 用定时器模拟内部时钟CubeMX配置时优先级为15（最低）❌
+- 用定时器模拟内部时钟CubeMX配置时优先级为15（最低）❌（**但是最好不要修改这个优先级，因为修改为最高优先级之后会影响其它输入捕获中断的嵌套**）
 - 定时器会影响系统运行的时序引起拥塞 ❌
 
 故我们可以使用内部滴答定时器（不占用硬件资源且运行效率高）：
@@ -476,5 +511,30 @@ void SysTick_Handler(void)
 
   /* USER CODE END SysTick_IRQn 1 */
 }
+void SysTick_Handler(void)
+{
+  /* USER CODE BEGIN SysTick_IRQn 0 */
+	if(N_direction!=0)
+	{
+		if(++time_01s>100)
+		{
+			time_01s = 0;
+			led_flag ^= 1;
+		}
+	}
+	else time_01s = 0;
+  /* USER CODE END SysTick_IRQn 0 */
+  HAL_IncTick();
+  /* USER CODE BEGIN SysTick_IRQn 1 */
+
+  /* USER CODE END SysTick_IRQn 1 */
+}
 ```
 # ⭐比赛难点逻辑
+
+## 1. 未退出数据修改复原逻辑
+
+## 2. 两种最大最小记录逻辑
+
+## 3. 长短按逻辑
+
