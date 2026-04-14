@@ -474,10 +474,33 @@ uint8_t uart_flag;
 sprintf(uart_tx_str, "Success\r\n");
 HAL_UART_Transmit_DMA(&huart1, (uint8_t *)uart_tx_str, strlen(uart_tx_str));
 
+void uart_proc(void)
+{
+	if(uart_flag)
+	{
+		if(strncmp(uart_rx_str, "R37", 3) == 0)
+		{
+            sprintf(uart_tx_str, "R37:%d,%d,%.1f%%", cnt_R37, cnt_R37_OK, PR37);
+		    HAL_UART_Transmit_DMA(&huart1, (uint8_t *)uart_tx_str, strlen(uart_tx_str));
+		}
+		else if(strncmp(uart_rx_str, "R38", 3) == 0)
+		{
+			sprintf(uart_tx_str, "R38:%d,%d,%.1f%%", cnt_R38, cnt_R38_Ok, PR38);
+		    HAL_UART_Transmit_DMA(&huart1, (uint8_t *)uart_tx_str, strlen(uart_tx_str));
+		}
+		uart_flag = 0;
+		memset(uart_rx_str, '\0', UART_MAX);
+	
+	}
+
+}
+
+
 void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
 {
 	if(huart -> Instance == USART1)
 	{
+	    uart_rx_str[Size] = '\0';
 		uart_flag = 1;
 		HAL_UARTEx_ReceiveToIdle_DMA(huart, (uint8_t *)uart_rx_str, UART_MAX);
 	}
@@ -534,7 +557,105 @@ void SysTick_Handler(void)
 
 ## 1. 未退出数据修改复原逻辑
 
+>💡这是在做16届模拟题3的时候遇到的最大的问题，这个应该是目前遇到的最难的逻辑。**最后采用的方法是使用备用值。**
+
+![16_3m.png](16_3m.png)
+```C
+	{
+	    sprintf(text, "        PARA        ");
+		LCD_DisplayStringLine(Line1, (uint8_t *)text);
+		if(IO_flag == 1 && UL_flag == 0) sprintf(text, "      High:%d       ", UL_alarm_temp);
+        else sprintf(text, "      High:%d       ", UL_alarm[0]);
+        LCD_DisplayStringLine(Line3, (uint8_t *)text);
+        if(IO_flag == 1 && UL_flag == 1) sprintf(text, "       Low:%d       ", UL_alarm_temp);
+        else sprintf(text, "       Low:%d       ", UL_alarm[1]);
+		LCD_DisplayStringLine(Line4, (uint8_t *)text);
+	}
+	
+		if(!B1_data & B1_last)
+	{
+		if(++lcd_mode > 2) lcd_mode = 0;
+		if(lcd_mode == 2)
+		{
+			UL_alarm_temp = UL_alarm[UL_flag]; //每次进入界面2，先存储当前的值
+			UL_flag = 0;
+			IO_flag = 0;
+			
+		}
+	}
+	
+		if(lcd_mode == 2)
+	{
+		if(!B2_data & B2_last)
+		{
+			UL_flag ^= 1;
+		}	
+		if(!B3_data & B3_last)
+		{
+	        if(IO_flag == 1)  //如果在修改状态，那么就赋值为原来的
+            {
+                 UL_alarm[UL_flag] = UL_alarm_temp;
+            }
+			IO_flag ^= 1;
+		}	
+		
+	}
+```
 ## 2. 两种最大最小记录逻辑
 
-## 3. 长短按逻辑
+![1.png](1.png)
 
+```C
+	float rate_min_last = 300;
+	float rate_max_last = 10;
+	float rate_max;
+	float rate_min;
+	if(rate > rate_max_last) rate_max = rate;
+	if(rate < rate_min_last) rate_min = rate;
+	rate_max_last = rate_max;
+	rate_min_last = rate_min;
+```
+
+![2.png](2.png)
+```C
+if(!PH_flag_B)//运用一个标志位
+	{
+		if(free_B>para_PH)
+		{
+			NHB++;
+			PH_flag_B = 1;
+		}
+	}
+	else
+	{
+		if(free_B<=para_PH) PH_flag_B = 0;
+	}
+```
+## 3. 长短/多按逻辑
+
+```C
+	if(lcd_mode == 0)//监控界面（长短按）
+	{
+		if(!B2_data&B2_last)
+		{
+			time_2s = uwTick;
+		}
+		if(B2_data&!B2_last)
+		{
+			if(uwTick - time_2s >= 2000)
+			{
+				memset(time_clock, 0, 3);
+			}
+			else
+			{
+				ST_flag ^= 1;
+			}
+		}
+		
+		
+	}
+```
+
+# ⭐总结
+
+**对自己充满坚定信念、有自信，比赛加油！（20260411）**
