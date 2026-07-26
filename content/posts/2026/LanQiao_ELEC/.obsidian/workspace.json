@@ -4,44 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "48fd0e77c96019c6",
+        "id": "4893b2dc564cb063",
         "type": "tabs",
-        "dimension": 77.43288590604027,
         "children": [
           {
-            "id": "f336bf430bcb471d",
+            "id": "937177ab4881629a",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "index.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "index"
-            }
-          }
-        ]
-      },
-      {
-        "id": "94ea7fde8f98d7c4",
-        "type": "tabs",
-        "dimension": 22.56711409395973,
-        "children": [
-          {
-            "id": "275497c0339ed5a5",
-            "type": "leaf",
-            "state": {
-              "type": "outline",
-              "state": {
-                "file": "index.md",
-                "followCursor": false,
-                "showSearch": false,
-                "searchQuery": ""
-              },
-              "icon": "lucide-list",
-              "title": "index 的大纲"
+              "title": "新标签页"
             }
           }
         ]
@@ -179,13 +152,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "index.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "index 的大纲"
+              "title": "大纲"
             }
           }
         ],
@@ -193,8 +165,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -207,14 +178,16 @@
       "bases:新建数据库": false
     }
   },
-  "active": "f336bf430bcb471d",
+  "active": "937177ab4881629a",
   "lastOpenFiles": [
+    "LED.png",
+    "2026-07-26.md",
+    "未命名.canvas",
+    "index.md",
     "2.png",
     "1.png",
     "16_3m.png",
     "16s.png",
-    "index.md",
-    "LED.png",
     "key.png"
   ]
 }

@@ -1,15 +1,14 @@
 {
   "main": {
-    "id": "328941419b98062d",
+    "id": "3e095120c5efeb43",
     "type": "split",
     "children": [
       {
-        "id": "5343b7f5e765e593",
+        "id": "025fd04256ffc1f1",
         "type": "tabs",
-        "dimension": 60.151006711409394,
         "children": [
           {
-            "id": "d32e27b46e058560",
+            "id": "f94a58d955d77122",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -23,42 +22,20 @@
             }
           }
         ]
-      },
-      {
-        "id": "8a55290eb588a149",
-        "type": "tabs",
-        "dimension": 39.848993288590606,
-        "children": [
-          {
-            "id": "a35048edbdb90e00",
-            "type": "leaf",
-            "state": {
-              "type": "outline",
-              "state": {
-                "file": "index.md",
-                "followCursor": false,
-                "showSearch": false,
-                "searchQuery": ""
-              },
-              "icon": "lucide-list",
-              "title": "index 的大纲"
-            }
-          }
-        ]
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "ff9c1c88f6b11ba1",
+    "id": "f1298b6431b5de65",
     "type": "split",
     "children": [
       {
-        "id": "40418d9d8074b965",
+        "id": "698f26b78a682518",
         "type": "tabs",
         "children": [
           {
-            "id": "fc1f961051d5c5ef",
+            "id": "7a9c42a411a3403c",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -71,7 +48,7 @@
             }
           },
           {
-            "id": "3d4822f498e4f200",
+            "id": "8c1d0367e8f4f217",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -88,7 +65,7 @@
             }
           },
           {
-            "id": "fd6d9eab632d1761",
+            "id": "bceab21d504ba2ea",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -104,15 +81,15 @@
     "width": 300
   },
   "right": {
-    "id": "692ff051941fe68e",
+    "id": "418b717f7f752b9b",
     "type": "split",
     "children": [
       {
-        "id": "3d33d2304fc74162",
+        "id": "0e629a690a708432",
         "type": "tabs",
         "children": [
           {
-            "id": "d878c27c8fa77104",
+            "id": "5e6a8b63d41b501b",
             "type": "leaf",
             "state": {
               "type": "backlink",
@@ -131,7 +108,7 @@
             }
           },
           {
-            "id": "b9848dbc8120f46e",
+            "id": "d2e0ecec3f232775",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
@@ -145,7 +122,7 @@
             }
           },
           {
-            "id": "8398cfb83c5f0218",
+            "id": "ad95193d2dcd3acc",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -160,7 +137,7 @@
             }
           },
           {
-            "id": "133e5a6bb51b51a5",
+            "id": "6c0b077bc11e622a",
             "type": "leaf",
             "state": {
               "type": "all-properties",
@@ -174,7 +151,7 @@
             }
           },
           {
-            "id": "18785cdab1fe3e34",
+            "id": "c4cf36e2040764f5",
             "type": "leaf",
             "state": {
               "type": "outline",
@@ -206,12 +183,6 @@
       "bases:新建数据库": false
     }
   },
-  "active": "fc1f961051d5c5ef",
-  "lastOpenFiles": [
-    "全反射.png",
-    "光纤通信系统.png",
-    "最大时延差.png",
-    "数值孔径.png",
-    "index.md"
-  ]
+  "active": "7a9c42a411a3403c",
+  "lastOpenFiles": []
 }
