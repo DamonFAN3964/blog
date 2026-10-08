@@ -1,0 +1,493 @@
+<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>嵌入式Learing | Damon不呆萌</title>
+<meta name=keywords content="大三下,嵌入式,硬件"><meta name=description content="蓝桥杯电子赛嵌入式40天备赛汇总"><meta name=author content><link rel=canonical href=https://DamonFAN3964.github.io/blog/posts/2026/lanqiao_elec/><link crossorigin=anonymous href=/blog/assets/css/stylesheet.343cc480b9ffc8f04ccbe5e968ad674880cab773ec19905e93033065c1e7a804.css integrity="sha256-NDzEgLn/yPBMy+XpaK1nSIDKt3PsGZBekwMwZcHnqAQ=" rel="preload stylesheet" as=style><link rel=icon href=https://DamonFAN3964.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://DamonFAN3964.github.io/blog/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://DamonFAN3964.github.io/blog/favicon-32x32.png><link rel=apple-touch-icon href=https://DamonFAN3964.github.io/blog/apple-touch-icon.png><link rel=mask-icon href=https://DamonFAN3964.github.io/blog/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://DamonFAN3964.github.io/blog/posts/2026/lanqiao_elec/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css><script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js></script><script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js onload=renderMathInElement(document.body)></script><script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1}]})})</script><meta property="og:url" content="https://DamonFAN3964.github.io/blog/posts/2026/lanqiao_elec/"><meta property="og:site_name" content="Damon不呆萌"><meta property="og:title" content="嵌入式Learing"><meta property="og:description" content="蓝桥杯电子赛嵌入式40天备赛汇总"><meta property="og:locale" content="zh-CN"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2026-03-03T10:00:00+08:00"><meta property="article:modified_time" content="2026-03-03T10:00:00+08:00"><meta property="article:tag" content="大三下"><meta property="article:tag" content="嵌入式"><meta property="article:tag" content="硬件"><meta name=twitter:card content="summary"><meta name=twitter:title content="嵌入式Learing"><meta name=twitter:description content="蓝桥杯电子赛嵌入式40天备赛汇总"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://DamonFAN3964.github.io/blog/posts/"},{"@type":"ListItem","position":2,"name":"嵌入式Learing","item":"https://DamonFAN3964.github.io/blog/posts/2026/lanqiao_elec/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"嵌入式Learing","name":"嵌入式Learing","description":"蓝桥杯电子赛嵌入式40天备赛汇总","keywords":["大三下","嵌入式","硬件"],"articleBody":"⭐工程思维/比赛思路 受到B站up主的启发，其做嵌入式题的思路体现了工程思维，兼具高效性和准确性。\n另辟工作区：创建工程时另外创建一个文件夹Code和fun.c用于存放自己编写的代码和比赛官方给的板子。 总头文件：创建bsp_system.h总头文件（包含各种子头文件），好处在于main.c中最终只需调用这个总头文件即可，清晰便捷。 函数分区：main.c中只写配置函数和调用main_proc的总函数（写在fun.c中），其它的局部函数、辅助函数（如data_proc用于所有数值计算）都隐藏在fun.c中，这样的函数分区使得工程封装很好 ⭐比赛注意事项/小技巧 进考场的准备：配置环境、按要求打包提交文件夹（准考证号命名）、一步一步调错、学会举手、注意细节、 工程配置：注意创建project的物理路径和逻辑路径、将头文件加入C/C++的编译路径 CUBEMX配置： 系统时钟选择外部晶振、输入频率为24MHz、优先配置Led引脚PC8~PC15和PD2、四个按键引脚PB0~PB2和PA0 ⭐比赛常见模块 💡 16届省赛主要考察了模拟信号的读取、定时器输入捕获、定时器PWM输出、定时器实现时钟、LED/LCD显示、按键长短按操作等。\n1. 头文件和主函数设置 fun.h //fun.h #ifndef __FUN_H__ #define __FUN_H__ #include \"bsp_system.h\" void main_pros(void); #endif bsp_system.h #ifndef __SYSTEM_H__ #define __SYSTEM_H__ #include \"stm32g4xx.h\" #include \"stdio.h\" //标准输入输出 #include \"string.h\" //字符串 #include \"stdint.h\" #include \"main.h\" #include \"gpio.h\" #include \"fun.h\" #include \"lcd.h\" #include \"adc.h\" #include \"tim.h\" #include \"math.h\" #include \"stdlib.h\" #endif main.c /* Private includes ----------------------------------------------------------*/ /* USER CODE BEGIN Includes */ #include \"bsp_system.h\" /* USER CODE END Includes */ /* USER CODE BEGIN SysInit */ LCD_Init(); LCD_Clear(Black); LCD_SetTextColor(White); LCD_SetBackColor(Black); /* USER CODE END SysInit */ /* USER CODE BEGIN 2 */ HAL_ADCEx_Calibration_Start(\u0026hadc2, ADC_SINGLE_ENDED); HAL_ADCEx_Calibration_Start(\u0026hadc1, ADC_SINGLE_ENDED); //ADC HAL_TIM_PWM_Start(\u0026htim17, TIM_CHANNEL_1); TIM17-\u003eCCR1=50; HAL_TIM_IC_Start_IT(\u0026htim2, TIM_CHANNEL_1); //输入捕获 HAL_TIM_PWM_Start(\u0026htim17, TIM_CHANNEL_1); //PWM HAL_TIM_Base_Start_IT(\u0026htim3); //定时器 /* USER CODE END 2 */ /* USER CODE BEGIN WHILE */ while (1) { main_pros(); /* USER CODE END WHILE */ /* USER CODE BEGIN 3 */ } 2. LCD显示 LCD显示直接借助比赛官方给的板子并移植到自己的工程中去（如果自己手搓难度很大）\n💡本题要求LCD刷新时间为0.1s并且呈现出背景黑色字体白色的三个界面：监控、异常和参数界面。\nchar text[20]; uint32_t lcd_dece; void lcd_show(void) { if(uwTick - lcd_dece \u003c 99) return; //利用滴答定时器的更新 lcd_dece = uwTick; uint16_t temp = GPIOC -\u003e ODR; sprintf(text, \" PWM \"); LCD_DisplayStringLine(Line1, (uint8_t *)text); GPIOC -\u003e ODR = temp; } ⭐不要再犯显示格式的错误了：\n显示时候要以所有界面最大行数为准，倘若某界面小于需要用空行来覆盖 每行注意从第几列开始并且总字符数为20 3. 按键操作 💡按键在考察长短按的同时，还考察了按键的响应时间\u003c0.2s且需要做防抖动处理。\nvoid key_scan(void) { B1_data = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_0); B2_data = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_1); B3_data = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_2); B4_data = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0); if(!B1_data\u0026B1_last) // B1按下 { if(lcd_mode == 1)//保存上一次的值 { PARA_DFSR_last[0] = PARA_DFSR_past[0]; PARA_DFSR_last[1] = PARA_DFSR_past[1]; PARA_DFSR_last[2] = PARA_DFSR_past[2]; } if(++lcd_mode \u003e2) //B1短按切换2-\u003e0 { lcd_mode=0; DFSR_index = 0; } } if(lcd_mode == 2)//参数界面 { if(!B2_data\u0026B2_last) // B2 { if(++DFSR_index \u003e 3) DFSR_index = 0; } if(!B3_data\u0026B3_last) // B3 + { PARA_DFSR[DFSR_index] += pow(10, DFSR_index); } if(!B4_data\u0026B4_last) // B4 - { PARA_DFSR[DFSR_index] -= pow(10, DFSR_index); } } if(lcd_mode == 0)//监控界面（长短按） { if(!B2_data\u0026B2_last) { time_2s = uwTick; } if(B2_data\u0026!B2_last) { if(uwTick - time_2s \u003e= 2000) { memset(time_clock, 0, 3); } else { ST_flag ^= 1; } } } B1_last = B1_data; B2_last = B2_data; B3_last = B3_data; B4_last = B4_data; } ⭐在进行状态判断、计时、比较大小等操作时一定要记得清除残留！！ ⭐针对于清除残留，长按为了避免与短按冲突和消抖，分为按下、按中、停止三个状态来写\nif(B3_data == 0 \u0026\u0026 B3_last == 1) // 按下 { flag_long = 1; cnt_1s = 0; } else if(B3_data == 0 \u0026\u0026 B3_last == 0) // 长按中 { if(flag_long) cnt_1s++; if(cnt_1s \u003e= 1000) // 长按1秒 { NDA=NDB=NHA=NHB=0; flag_long = 0; cnt_1s = 0; } } else if(B3_data == 1 \u0026\u0026 B3_last == 0) // 松开 { flag_long = 0; cnt_1s = 0; } } B3_last = B3_data; 4 . LED显示 void led_show(uint8_t led, uint8_t mode) { HAL_GPIO_WritePin(GPIOD, GPIO_PIN_2, GPIO_PIN_SET); if(mode) HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8\u003c\u003c(led-1), GPIO_PIN_RESET);//mode不等于0为开 else HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8\u003c\u003c(led-1), GPIO_PIN_SET); HAL_GPIO_WritePin(GPIOD, GPIO_PIN_2, GPIO_PIN_RESET); } ⭐LED显示时一定要注意把不需要的LED需要设置关闭状态\n5. ADC 💡ADC最主要的注意点是要在mian.c中调用配置函数后，在fun.c中要写adc_read函数。（不要忘了adc采集值的数据类型是double!!!!!）\nHAL_ADCEx_Calibration_Start(\u0026hadc2, ADC_SINGLE_ENDED); HAL_ADCEx_Calibration_Start(\u0026hadc1, ADC_SINGLE_ENDED); double adc_read(ADC_HandleTypeDef *hadc) { HAL_ADC_Start(hadc); uint16_t value_adc = HAL_ADC_GetValue(hadc); return 3.3*value_adc/4096; } 6. 定时器输入捕获、输出PWM和时钟 💡本题使用TIM2作为输入捕获、TIM17作为PWM输出、TIM3作为时钟。基本步骤为在main.c中调用配置函数，fun.c中编写回调函数（在CUBEMX中配置时要注意不要选择TIM7/8高级定时器）\nPWM模式下预分频系数PSC为800-1，自动重载值ARR为100-1（这样的好处在于STM32G431RBT6的主频为80MHz，分频下来为1ms/1kHz且占空比的值就为计数器CCR的值。（⭐不用配置中断） 输入捕获模式下预分频系数PSC为80-1，自动重载值ARR不用改，这样频率$f=1000000/(TIM-\u003eCCR1 +1)$，周期$T = 1000000/f$（✨记得CNT清零）（⭐配置中断） 计时器模式下预分频系数PSC为800-1，自动重载值ARR为100-1，这样计时单位为1ms（✨记得清零）（⭐配置中断） void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim) { if(htim -\u003e Instance == TIM2) { fre_R40 = 1000000/(TIM2 -\u003e CCR1+1); TIM2 -\u003e CNT = 0; } } void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) { if(htim -\u003e Instance == TIM3) { if(++time_clock[2]\u003e59) { time_clock[2]=0; if(++time_clock[1]\u003e59) { time_clock[1]=0; if(++time_clock[0]\u003e999) { time_clock[0]=0; time_clock[1]=0; time_clock[2]=0; } } } } } 7. EPROM AT24C02 就是一种常用的 I2C 接口 EEPROM 芯片（电可擦除可编程只读存储器）。\nAT24C02 的关键参数：\n容量：2Kbit = 256 字节 地址范围：0x00 ~ 0xFF（一共 256 个地址） 通信接口：I2C 功能：存密码、存参数、存设置，掉电不丢 eeprom_wirte(0x00, passwd_input[0]);//向0x00内存地址写入值 passwd_right[0] = eeprom_read(0x00);//从0x00内存读出存储值 ⭐工程配置上需要导入i2c_hal.c和i2c_hal.h。 这两个函数需要自己实现（在i2c_hal.c中编写、i2c_hal.h中声明），且pass_right数组需要在bsp_system头文件中外部声明\n// void eeprom_wirte(uint8_t address, uint8_t data) { I2CStart(); I2CSendByte(0xa0); I2CWaitAck(); I2CSendByte(address); I2CWaitAck(); I2CSendByte(data); I2CWaitAck(); I2CStop(); HAL_Delay(10); } // uint8_t eeprom_read(uint8_t address) { I2CStart(); I2CSendByte(0xa0); I2CWaitAck(); I2CSendByte(address); I2CWaitAck(); I2CStop(); I2CStart(); I2CSendByte(0xa1); I2CWaitAck(); uint8_t data = I2CReceiveByte(); I2CSendNotAck(); I2CStop(); return data; } 8. I2C ⭐16届模拟题1找了很久的问题：为什么工程代码与满分工程一模一样，但是就是页面跳转不了（输入正确密码下），最后才发现是CubeMX中I2C的SCL和SDA（PB6和PB7）引脚没有配置🤣细节决定成败。\n9. UART 要实现串口通信，我们选择UART，在CubeMX配置中，设置异步模式和题目规定的波特率并开启中断，USATR1_TX和RX分别对应引脚PA9、PA10。\n🤣🤣🤣波特率记得修改为9600!!!（CubeMX初始为115200）\n//main.c中的配置函数 HAL_UART_Receive_IT(\u0026huart1, \u0026uart_data, 1); //fun.c中的串口处理函数和接收回调函数 char uart_str[4]; uint8_t uart_int[3]; uint8_t uart_indax; uint8_t uart_data; uint8_t uart_flag; void uart_pros(void) { if(uart_flag) { if(TIM4-\u003eCNT\u003e15) { if(uart_indax == 2) { if(uart_int[0]=='B'\u0026\u0026uart_int[1]=='1') { if(!lcd_mode) { auto_hand ^= 1; time_count = 0; } else lcd_mode = 0; } else if(uart_int[0]=='B'\u0026\u0026uart_int[1]=='2') { if(!lcd_mode) { if(auto_hand) { if(++gear_flag \u003e 3) gear_flag = 1; } time_count = 0; } else lcd_mode = 0; } else if(uart_int[0]=='B'\u0026\u0026uart_int[1]=='3') { if(!lcd_mode) { if(auto_hand) { if(--gear_flag \u003c 1) gear_flag = 3; } time_count = 0; } else lcd_mode = 0; } else { sprintf(uart_str, \"NULL\"); HAL_UART_Transmit(\u0026huart1, (uint8_t *)uart_str, 4, 50); //以阻塞方式发送 `uart_str` 数组里的 4 个字节数据，如果 50ms 内没发送完成，就停止并返回错误。 } } else { sprintf(uart_str, \"NULL\"); HAL_UART_Transmit(\u0026huart1, (uint8_t *)uart_str, 4, 50); } for(int i=0;i\u003cuart_indax;i++) uart_str[i] = 0; uart_flag = 0; uart_indax = 0; } } } void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) { if(huart-\u003eInstance == USART1) { TIM4-\u003eCNT = 0; uart_flag = 1; time_count = 0; led_flag = 1; uart_int[uart_indax++] = uart_data; HAL_UART_Receive_IT(huart, \u0026uart_data, 1); } } ⭐⭐⭐其中只有TIM3当作定时器（配置PSC = 800-1，ARR为100-1）来用（需要在3s和5s时执行全局中断；而TIM4只是用于串口的串口超时计数器（计数寄存器一直加，一有数据发送就清零），不用设置中断。（但是main.c中要写配置函数！（16_2m出现了问题））（配置PSC = 8000-1，ARR保持65535） 🤣🤣🤣回调函数看好了是RX不是TX（找了很久为什么串口无效的原因）\n⭐⭐⭐但如果想要发送串口的同时CPU也要工作去执行主循环（15届模拟1的导航），那我们需要引入非阻塞方式的DMA发送串口：\n//main.c中的配置函数 HAL_UARTEx_ReceiveToIdle_DMA(\u0026huart1, (uint8_t *)uart_rx_str, UART_MAX); //fun.c中的回调函数和发送串口函数 char uart_tx_str[UART_MAX]; char uart_rx_str[UART_MAX]; uint8_t uart_flag; sprintf(uart_tx_str, \"Success\\r\\n\"); HAL_UART_Transmit_DMA(\u0026huart1, (uint8_t *)uart_tx_str, strlen(uart_tx_str)); void uart_proc(void) { if(uart_flag) { if(strncmp(uart_rx_str, \"R37\", 3) == 0) { sprintf(uart_tx_str, \"R37:%d,%d,%.1f%%\", cnt_R37, cnt_R37_OK, PR37); HAL_UART_Transmit_DMA(\u0026huart1, (uint8_t *)uart_tx_str, strlen(uart_tx_str)); } else if(strncmp(uart_rx_str, \"R38\", 3) == 0) { sprintf(uart_tx_str, \"R38:%d,%d,%.1f%%\", cnt_R38, cnt_R38_Ok, PR38); HAL_UART_Transmit_DMA(\u0026huart1, (uint8_t *)uart_tx_str, strlen(uart_tx_str)); } uart_flag = 0; memset(uart_rx_str, '\\0', UART_MAX); } } void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size) { if(huart -\u003e Instance == USART1) { uart_rx_str[Size] = '\\0'; uart_flag = 1; HAL_UARTEx_ReceiveToIdle_DMA(huart, (uint8_t *)uart_rx_str, UART_MAX); } } // ⭐在bsp_system.h中需要定义和外部声明 #define UART_MAX 30 extern char uart_rx_str[UART_MAX]; ⭐这一道题也让我学会一个简化代码和思路的方法：汽车导航的串口不仅是向串口输入字符后的直接输出，还有再执行一定操作（如案件等）才返回的串口字符，那我们为什么不可以用隔离法呢，将一个逻辑链切成两半：把需要输入字符的操作放在串口函数中，其它逻辑操作串口输出放在其他函数。\n9. 滴答定时器 ⭐在做16届模拟题1的时候，发现自己通过用定时器TIM4计时烧录之后出现黑屏死机（而满分工程中调用的滴答定时器却不会），后来发现两个原因：\n用定时器模拟内部时钟CubeMX配置时优先级为15（最低）❌（但是最好不要修改这个优先级，因为修改为最高优先级之后会影响其它输入捕获中断的嵌套） 定时器会影响系统运行的时序引起拥塞 ❌ 故我们可以使用内部滴答定时器（不占用硬件资源且运行效率高）： ⭐编写时要把系统原来定义好的同名函数注释掉，避免重复定义\nvoid SysTick_Handler(void) { /* USER CODE BEGIN SysTick_IRQn 0 */ if(time_flag) time_3s++; /* USER CODE END SysTick_IRQn 0 */ HAL_IncTick(); /* USER CODE BEGIN SysTick_IRQn 1 */ /* USER CODE END SysTick_IRQn 1 */ } void SysTick_Handler(void) { /* USER CODE BEGIN SysTick_IRQn 0 */ if(N_direction!=0) { if(++time_01s\u003e100) { time_01s = 0; led_flag ^= 1; } } else time_01s = 0; /* USER CODE END SysTick_IRQn 0 */ HAL_IncTick(); /* USER CODE BEGIN SysTick_IRQn 1 */ /* USER CODE END SysTick_IRQn 1 */ } ⭐比赛难点逻辑 1. 未退出数据修改复原逻辑 💡这是在做16届模拟题3的时候遇到的最大的问题，这个应该是目前遇到的最难的逻辑。最后采用的方法是使用备用值。\n{ sprintf(text, \" PARA \"); LCD_DisplayStringLine(Line1, (uint8_t *)text); if(IO_flag == 1 \u0026\u0026 UL_flag == 0) sprintf(text, \" High:%d \", UL_alarm_temp); else sprintf(text, \" High:%d \", UL_alarm[0]); LCD_DisplayStringLine(Line3, (uint8_t *)text); if(IO_flag == 1 \u0026\u0026 UL_flag == 1) sprintf(text, \" Low:%d \", UL_alarm_temp); else sprintf(text, \" Low:%d \", UL_alarm[1]); LCD_DisplayStringLine(Line4, (uint8_t *)text); } if(!B1_data \u0026 B1_last) { if(++lcd_mode \u003e 2) lcd_mode = 0; if(lcd_mode == 2) { UL_alarm_temp = UL_alarm[UL_flag]; //每次进入界面2，先存储当前的值 UL_flag = 0; IO_flag = 0; } } if(lcd_mode == 2) { if(!B2_data \u0026 B2_last) { UL_flag ^= 1; }\tif(!B3_data \u0026 B3_last) { if(IO_flag == 1) //如果在修改状态，那么就赋值为原来的 { UL_alarm[UL_flag] = UL_alarm_temp; } IO_flag ^= 1; }\t} 2. 两种最大最小记录逻辑 float rate_min_last = 300; float rate_max_last = 10; float rate_max; float rate_min; if(rate \u003e rate_max_last) rate_max = rate; if(rate \u003c rate_min_last) rate_min = rate; rate_max_last = rate_max; rate_min_last = rate_min; if(!PH_flag_B)//运用一个标志位 { if(free_B\u003epara_PH) { NHB++; PH_flag_B = 1; } } else { if(free_B\u003c=para_PH) PH_flag_B = 0; } 3. 长短/多按逻辑 if(lcd_mode == 0)//监控界面（长短按） { if(!B2_data\u0026B2_last) { time_2s = uwTick; } if(B2_data\u0026!B2_last) { if(uwTick - time_2s \u003e= 2000) { memset(time_clock, 0, 3); } else { ST_flag ^= 1; } } } ⭐总结 对自己充满坚定信念、有自信，比赛加油！（20260411）\n","wordCount":"3814","inLanguage":"en","datePublished":"2026-03-03T10:00:00+08:00","dateModified":"2026-03-03T10:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://DamonFAN3964.github.io/blog/posts/2026/lanqiao_elec/"},"publisher":{"@type":"Organization","name":"Damon不呆萌","logo":{"@type":"ImageObject","url":"https://DamonFAN3964.github.io/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=nav><div class=logo><a href=https://DamonFAN3964.github.io/blog/ accesskey=h title="Damon不呆萌 (Alt + H)">Damon不呆萌</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme"><svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://DamonFAN3964.github.io/blog/posts/ title=所有文章><span>所有文章</span></a></li><li><a href=https://DamonFAN3964.github.io/blog/categories/ title=分类><span>分类</span></a></li><li><a href=https://DamonFAN3964.github.io/blog/tags/ title=标签><span>标签</span></a></li><li><a href=https://DamonFAN3964.github.io/blog/search/ title=搜索><span>搜索</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><div class=breadcrumbs><a href=https://DamonFAN3964.github.io/blog/>Home</a>&nbsp;»&nbsp;<a href=https://DamonFAN3964.github.io/blog/posts/>Posts</a></div><h1 class="post-title entry-hint-parent">嵌入式Learing</h1><div class=post-meta><span title='2026-03-03 10:00:00 +0800 +0800'>March 3, 2026</span>&nbsp;·&nbsp;<span>8 min</span></div></header><div class=toc><details open><summary accesskey=c title="(Alt + C)"><span class=details>Table of Contents</span></summary><div class=inner><ul><li><a href=#%e5%b7%a5%e7%a8%8b%e6%80%9d%e7%bb%b4%e6%af%94%e8%b5%9b%e6%80%9d%e8%b7%af aria-label=⭐工程思维/比赛思路>⭐工程思维/比赛思路</a></li><li><a href=#%e6%af%94%e8%b5%9b%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9%e5%b0%8f%e6%8a%80%e5%b7%a7 aria-label=⭐比赛注意事项/小技巧>⭐比赛注意事项/小技巧</a></li><li><a href=#%e6%af%94%e8%b5%9b%e5%b8%b8%e8%a7%81%e6%a8%a1%e5%9d%97 aria-label=⭐比赛常见模块>⭐比赛常见模块</a><ul><li><a href=#1-%e5%a4%b4%e6%96%87%e4%bb%b6%e5%92%8c%e4%b8%bb%e5%87%bd%e6%95%b0%e8%ae%be%e7%bd%ae aria-label="1. 头文件和主函数设置">1. 头文件和主函数设置</a><ul><li><a href=#funh aria-label=fun.h>fun.h</a></li><li><a href=#bsp_systemh aria-label=bsp_system.h>bsp_system.h</a></li><li><a href=#mainc aria-label=main.c>main.c</a></li></ul></li><li><a href=#2-lcd%e6%98%be%e7%a4%ba aria-label="2. LCD显示">2. LCD显示</a></li><li><a href=#3-%e6%8c%89%e9%94%ae%e6%93%8d%e4%bd%9c aria-label="3. 按键操作">3. 按键操作</a></li><li><a href=#4--led%e6%98%be%e7%a4%ba aria-label="4 . LED显示">4 . LED显示</a></li><li><a href=#5-adc aria-label="5. ADC">5. ADC</a></li><li><a href=#6-%e5%ae%9a%e6%97%b6%e5%99%a8%e8%be%93%e5%85%a5%e6%8d%95%e8%8e%b7%e8%be%93%e5%87%bapwm%e5%92%8c%e6%97%b6%e9%92%9f aria-label="6. 定时器输入捕获、输出PWM和时钟">6. 定时器输入捕获、输出PWM和时钟</a></li><li><a href=#7-eprom aria-label="7. EPROM">7. EPROM</a></li><li><a href=#8-i2c aria-label="8. I2C">8. I2C</a></li><li><a href=#9-uart aria-label="9. UART">9. UART</a></li><li><a href=#9-%e6%bb%b4%e7%ad%94%e5%ae%9a%e6%97%b6%e5%99%a8 aria-label="9. 滴答定时器">9. 滴答定时器</a></li></ul></li><li><a href=#%e6%af%94%e8%b5%9b%e9%9a%be%e7%82%b9%e9%80%bb%e8%be%91 aria-label=⭐比赛难点逻辑>⭐比赛难点逻辑</a><ul><li><a href=#1-%e6%9c%aa%e9%80%80%e5%87%ba%e6%95%b0%e6%8d%ae%e4%bf%ae%e6%94%b9%e5%a4%8d%e5%8e%9f%e9%80%bb%e8%be%91 aria-label="1. 未退出数据修改复原逻辑">1. 未退出数据修改复原逻辑</a></li><li><a href=#2-%e4%b8%a4%e7%a7%8d%e6%9c%80%e5%a4%a7%e6%9c%80%e5%b0%8f%e8%ae%b0%e5%bd%95%e9%80%bb%e8%be%91 aria-label="2. 两种最大最小记录逻辑">2. 两种最大最小记录逻辑</a></li><li><a href=#3-%e9%95%bf%e7%9f%ad%e5%a4%9a%e6%8c%89%e9%80%bb%e8%be%91 aria-label="3. 长短/多按逻辑">3. 长短/多按逻辑</a></li></ul></li><li><a href=#%e6%80%bb%e7%bb%93 aria-label=⭐总结>⭐总结</a></li></ul></div></details></div><div class=post-content><h1 id=工程思维比赛思路>⭐工程思维/比赛思路<a hidden class=anchor aria-hidden=true href=#工程思维比赛思路>#</a></h1><p>受到B站up主的启发，其做嵌入式题的思路体现了工程思维，兼具高效性和准确性。</p><ul><li><strong>另辟工作区</strong>：创建工程时另外创建一个文件夹<strong>Code和fun.c</strong>用于存放自己编写的代码和比赛官方给的板子。</li><li><strong>总头文件</strong>：创建<strong>bsp_system.h</strong>总头文件（包含各种子头文件），好处在于main.c中最终只需调用这个总头文件即可，清晰便捷。</li><li><strong>函数分区</strong>：<strong>main.c</strong>中只写配置函数和调用main_proc的总函数（写在fun.c中），其它的局部函数、辅助函数（如data_proc用于所有数值计算）都隐藏在fun.c中，这样的函数分区使得工程封装很好</li></ul><h1 id=比赛注意事项小技巧>⭐比赛注意事项/小技巧<a hidden class=anchor aria-hidden=true href=#比赛注意事项小技巧>#</a></h1><ul><li><strong>进考场的准备</strong>：配置环境、按要求打包提交文件夹（<strong>准考证号命名</strong>）、一步一步<strong>调错</strong>、学会<strong>举手</strong>、注意<strong>细节</strong>、</li><li><strong>工程配置</strong>：注意创建project的<strong>物理路径和逻辑路径</strong>、将头文件加入C/C++的<strong>编译路径</strong></li><li><strong>CUBEMX配置：</strong> 系统时钟选择外部晶振、输入频率为24MHz、优先配置Led引脚<strong>PC8~PC15</strong>和PD2、四个按键引脚<strong>PB0~PB2和PA0</strong></li></ul><h1 id=比赛常见模块>⭐比赛常见模块<a hidden class=anchor aria-hidden=true href=#比赛常见模块>#</a></h1><p><img alt=16s.png loading=lazy src=/blog/posts/2026/lanqiao_elec/16s.png></p><blockquote><p>💡 16届省赛主要考察了<strong>模拟信号的读取、定时器输入捕获、定时器PWM输出、定时器实现时钟、LED/LCD显示、按键长短按操作</strong>等。</p></blockquote><h2 id=1-头文件和主函数设置>1. 头文件和主函数设置<a hidden class=anchor aria-hidden=true href=#1-头文件和主函数设置>#</a></h2><h3 id=funh>fun.h<a hidden class=anchor aria-hidden=true href=#funh>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c data-lang=c><span style=display:flex><span><span style=color:#75715e>//fun.h
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#75715e>#ifndef __FUN_H__
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#define __FUN_H__
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&#34;bsp_system.h&#34;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main_pros</span>(<span style=color:#66d9ef>void</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#endif
+</span></span></span></code></pre></div><h3 id=bsp_systemh>bsp_system.h<a hidden class=anchor aria-hidden=true href=#bsp_systemh>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c data-lang=c><span style=display:flex><span><span style=color:#75715e>#ifndef __SYSTEM_H__
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#define __SYSTEM_H__
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&#34;stm32g4xx.h&#34;                 </span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&#34;stdio.h&#34;  //标准输入输出</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&#34;string.h&#34; //字符串</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&#34;stdint.h&#34; </span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&#34;main.h&#34;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&#34;gpio.h&#34;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&#34;fun.h&#34;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&#34;lcd.h&#34;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&#34;adc.h&#34;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&#34;tim.h&#34;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&#34;math.h&#34;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&#34;stdlib.h&#34;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#endif
+</span></span></span></code></pre></div><h3 id=mainc>main.c<a hidden class=anchor aria-hidden=true href=#mainc>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c data-lang=c><span style=display:flex><span><span style=color:#75715e>/* Private includes ----------------------------------------------------------*/</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>/* USER CODE BEGIN Includes */</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&#34;bsp_system.h&#34;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#75715e>/* USER CODE END Includes */</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>/* USER CODE BEGIN SysInit */</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>LCD_Init</span>();
+</span></span><span style=display:flex><span><span style=color:#a6e22e>LCD_Clear</span>(Black);
+</span></span><span style=display:flex><span><span style=color:#a6e22e>LCD_SetTextColor</span>(White);
+</span></span><span style=display:flex><span><span style=color:#a6e22e>LCD_SetBackColor</span>(Black);
+</span></span><span style=display:flex><span><span style=color:#75715e>/* USER CODE END SysInit */</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>/* USER CODE BEGIN 2 */</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>HAL_ADCEx_Calibration_Start</span>(<span style=color:#f92672>&amp;</span>hadc2, ADC_SINGLE_ENDED);
+</span></span><span style=display:flex><span><span style=color:#a6e22e>HAL_ADCEx_Calibration_Start</span>(<span style=color:#f92672>&amp;</span>hadc1, ADC_SINGLE_ENDED); <span style=color:#75715e>//ADC
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#a6e22e>HAL_TIM_PWM_Start</span>(<span style=color:#f92672>&amp;</span>htim17, TIM_CHANNEL_1);
+</span></span><span style=display:flex><span>TIM17<span style=color:#f92672>-&gt;</span>CCR1<span style=color:#f92672>=</span><span style=color:#ae81ff>50</span>;
+</span></span><span style=display:flex><span><span style=color:#a6e22e>HAL_TIM_IC_Start_IT</span>(<span style=color:#f92672>&amp;</span>htim2, TIM_CHANNEL_1); <span style=color:#75715e>//输入捕获
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#a6e22e>HAL_TIM_PWM_Start</span>(<span style=color:#f92672>&amp;</span>htim17, TIM_CHANNEL_1); <span style=color:#75715e>//PWM
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#a6e22e>HAL_TIM_Base_Start_IT</span>(<span style=color:#f92672>&amp;</span>htim3); <span style=color:#75715e>//定时器
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#75715e>/* USER CODE END 2 */</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>/* USER CODE BEGIN WHILE */</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>while</span> (<span style=color:#ae81ff>1</span>)
+</span></span><span style=display:flex><span>  {
+</span></span><span style=display:flex><span>	    <span style=color:#a6e22e>main_pros</span>();
+</span></span><span style=display:flex><span>    <span style=color:#75715e>/* USER CODE END WHILE */</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>/* USER CODE BEGIN 3 */</span>
+</span></span><span style=display:flex><span>  }
+</span></span></code></pre></div><h2 id=2-lcd显示>2. LCD显示<a hidden class=anchor aria-hidden=true href=#2-lcd显示>#</a></h2><p>LCD显示直接借助比赛官方给的板子并移植到自己的工程中去（<del>如果自己手搓难度很大</del>）</p><blockquote><p>💡本题要求LCD刷新时间为<strong>0.1s</strong>并且呈现出背景黑色字体白色的<strong>三个界面</strong>：监控、异常和参数界面。</p></blockquote><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c data-lang=c><span style=display:flex><span><span style=color:#66d9ef>char</span> text[<span style=color:#ae81ff>20</span>];
+</span></span><span style=display:flex><span><span style=color:#66d9ef>uint32_t</span> lcd_dece;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>void</span> <span style=color:#a6e22e>lcd_show</span>(<span style=color:#66d9ef>void</span>)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>if</span>(uwTick <span style=color:#f92672>-</span> lcd_dece <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>99</span>) <span style=color:#66d9ef>return</span>; <span style=color:#75715e>//利用滴答定时器的更新
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>	lcd_dece <span style=color:#f92672>=</span> uwTick;
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>uint16_t</span> temp <span style=color:#f92672>=</span> GPIOC <span style=color:#f92672>-&gt;</span> ODR;
+</span></span><span style=display:flex><span>	
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>sprintf</span>(text, <span style=color:#e6db74>&#34;       PWM          &#34;</span>);
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>LCD_DisplayStringLine</span>(Line1, (<span style=color:#66d9ef>uint8_t</span> <span style=color:#f92672>*</span>)text);
+</span></span><span style=display:flex><span>	
+</span></span><span style=display:flex><span>	GPIOC <span style=color:#f92672>-&gt;</span> ODR <span style=color:#f92672>=</span> temp;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>⭐<del>不要再犯显示格式的错误了</del>：</p><ul><li>显示时候要以所有界面最大行数为准，倘若某界面小于需要用<strong>空行</strong>来覆盖</li><li>每行注意从<strong>第几列</strong>开始并且总字符数为<strong>20</strong></li></ul><h2 id=3-按键操作>3. 按键操作<a hidden class=anchor aria-hidden=true href=#3-按键操作>#</a></h2><p><img alt=key.png loading=lazy src=/blog/posts/2026/lanqiao_elec/key.png></p><blockquote><p>💡按键在考察<strong>长短按</strong>的同时，还考察了按键的<strong>响应时间&lt;0.2s</strong>且需要做<strong>防抖动处理</strong>。</p></blockquote><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c data-lang=c><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>void</span> <span style=color:#a6e22e>key_scan</span>(<span style=color:#66d9ef>void</span>)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>	
+</span></span><span style=display:flex><span>	B1_data <span style=color:#f92672>=</span> <span style=color:#a6e22e>HAL_GPIO_ReadPin</span>(GPIOB, GPIO_PIN_0); 
+</span></span><span style=display:flex><span>	B2_data <span style=color:#f92672>=</span> <span style=color:#a6e22e>HAL_GPIO_ReadPin</span>(GPIOB, GPIO_PIN_1); 
+</span></span><span style=display:flex><span>	B3_data <span style=color:#f92672>=</span> <span style=color:#a6e22e>HAL_GPIO_ReadPin</span>(GPIOB, GPIO_PIN_2);
+</span></span><span style=display:flex><span>	B4_data <span style=color:#f92672>=</span> <span style=color:#a6e22e>HAL_GPIO_ReadPin</span>(GPIOA, GPIO_PIN_0);
+</span></span><span style=display:flex><span>	
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>if</span>(<span style=color:#f92672>!</span>B1_data<span style=color:#f92672>&amp;</span>B1_last) <span style=color:#75715e>// B1按下
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>	{
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>if</span>(lcd_mode <span style=color:#f92672>==</span> <span style=color:#ae81ff>1</span>)<span style=color:#75715e>//保存上一次的值
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>		{
+</span></span><span style=display:flex><span>			PARA_DFSR_last[<span style=color:#ae81ff>0</span>] <span style=color:#f92672>=</span> PARA_DFSR_past[<span style=color:#ae81ff>0</span>];
+</span></span><span style=display:flex><span>			PARA_DFSR_last[<span style=color:#ae81ff>1</span>] <span style=color:#f92672>=</span> PARA_DFSR_past[<span style=color:#ae81ff>1</span>];
+</span></span><span style=display:flex><span>			PARA_DFSR_last[<span style=color:#ae81ff>2</span>] <span style=color:#f92672>=</span> PARA_DFSR_past[<span style=color:#ae81ff>2</span>];
+</span></span><span style=display:flex><span>		}
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>if</span>(<span style=color:#f92672>++</span>lcd_mode <span style=color:#f92672>&gt;</span><span style=color:#ae81ff>2</span>) <span style=color:#75715e>//B1短按切换2-&gt;0
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>		{
+</span></span><span style=display:flex><span>			lcd_mode<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>			DFSR_index <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>		}
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>if</span>(lcd_mode <span style=color:#f92672>==</span> <span style=color:#ae81ff>2</span>)<span style=color:#75715e>//参数界面
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>	{
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>if</span>(<span style=color:#f92672>!</span>B2_data<span style=color:#f92672>&amp;</span>B2_last) <span style=color:#75715e>// B2
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>	    {
+</span></span><span style=display:flex><span>		    <span style=color:#66d9ef>if</span>(<span style=color:#f92672>++</span>DFSR_index <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>3</span>) DFSR_index <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>	    }
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>if</span>(<span style=color:#f92672>!</span>B3_data<span style=color:#f92672>&amp;</span>B3_last) <span style=color:#75715e>// B3 +
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>		{
+</span></span><span style=display:flex><span>			PARA_DFSR[DFSR_index] <span style=color:#f92672>+=</span> <span style=color:#a6e22e>pow</span>(<span style=color:#ae81ff>10</span>, DFSR_index);
+</span></span><span style=display:flex><span>		}
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>if</span>(<span style=color:#f92672>!</span>B4_data<span style=color:#f92672>&amp;</span>B4_last) <span style=color:#75715e>// B4 -
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>		{
+</span></span><span style=display:flex><span>			PARA_DFSR[DFSR_index] <span style=color:#f92672>-=</span> <span style=color:#a6e22e>pow</span>(<span style=color:#ae81ff>10</span>, DFSR_index);
+</span></span><span style=display:flex><span>		}
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>	
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>if</span>(lcd_mode <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>)<span style=color:#75715e>//监控界面（长短按）
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>	{
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>if</span>(<span style=color:#f92672>!</span>B2_data<span style=color:#f92672>&amp;</span>B2_last)
+</span></span><span style=display:flex><span>		{
+</span></span><span style=display:flex><span>			time_2s <span style=color:#f92672>=</span> uwTick;
+</span></span><span style=display:flex><span>		}
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>if</span>(B2_data<span style=color:#f92672>&amp;!</span>B2_last)
+</span></span><span style=display:flex><span>		{
+</span></span><span style=display:flex><span>			<span style=color:#66d9ef>if</span>(uwTick <span style=color:#f92672>-</span> time_2s <span style=color:#f92672>&gt;=</span> <span style=color:#ae81ff>2000</span>)
+</span></span><span style=display:flex><span>			{
+</span></span><span style=display:flex><span>				<span style=color:#a6e22e>memset</span>(time_clock, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>3</span>);
+</span></span><span style=display:flex><span>			}
+</span></span><span style=display:flex><span>			<span style=color:#66d9ef>else</span>
+</span></span><span style=display:flex><span>			{
+</span></span><span style=display:flex><span>				ST_flag <span style=color:#f92672>^=</span> <span style=color:#ae81ff>1</span>;
+</span></span><span style=display:flex><span>			}
+</span></span><span style=display:flex><span>		}
+</span></span><span style=display:flex><span>		
+</span></span><span style=display:flex><span>		
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>		
+</span></span><span style=display:flex><span>	
+</span></span><span style=display:flex><span>	B1_last <span style=color:#f92672>=</span> B1_data;
+</span></span><span style=display:flex><span>	B2_last <span style=color:#f92672>=</span> B2_data;
+</span></span><span style=display:flex><span>	B3_last <span style=color:#f92672>=</span> B3_data;
+</span></span><span style=display:flex><span>	B4_last <span style=color:#f92672>=</span> B4_data;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>⭐在进行状态判断、计时、比较大小等操作时一定要记得<strong>清除残留</strong>！！
+⭐针对于清除残留，长按为了避免与短按冲突和消抖，分为<strong>按下、按中、停止</strong>三个状态来写</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c data-lang=c><span style=display:flex><span><span style=color:#66d9ef>if</span>(B3_data <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span> <span style=color:#f92672>&amp;&amp;</span> B3_last <span style=color:#f92672>==</span> <span style=color:#ae81ff>1</span>) <span style=color:#75715e>// 按下 
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>{ 
+</span></span><span style=display:flex><span>    flag_long <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>; 
+</span></span><span style=display:flex><span>    cnt_1s <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; 
+</span></span><span style=display:flex><span>} 
+</span></span><span style=display:flex><span><span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span>(B3_data <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span> <span style=color:#f92672>&amp;&amp;</span> B3_last <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>) <span style=color:#75715e>// 长按中 
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>{ 
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span>(flag_long) cnt_1s<span style=color:#f92672>++</span>; 
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span>(cnt_1s <span style=color:#f92672>&gt;=</span> <span style=color:#ae81ff>1000</span>) <span style=color:#75715e>// 长按1秒 
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    { 
+</span></span><span style=display:flex><span>        NDA<span style=color:#f92672>=</span>NDB<span style=color:#f92672>=</span>NHA<span style=color:#f92672>=</span>NHB<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>; 
+</span></span><span style=display:flex><span>        flag_long <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; 
+</span></span><span style=display:flex><span>        cnt_1s <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; 
+</span></span><span style=display:flex><span>    } 
+</span></span><span style=display:flex><span>} 
+</span></span><span style=display:flex><span><span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span>(B3_data <span style=color:#f92672>==</span> <span style=color:#ae81ff>1</span> <span style=color:#f92672>&amp;&amp;</span> B3_last <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>) <span style=color:#75715e>// 松开 
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    { 
+</span></span><span style=display:flex><span>        flag_long <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; 
+</span></span><span style=display:flex><span>        cnt_1s <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; 
+</span></span><span style=display:flex><span>    } 
+</span></span><span style=display:flex><span>} 
+</span></span><span style=display:flex><span>B3_last <span style=color:#f92672>=</span> B3_data;
+</span></span></code></pre></div><h2 id=4--led显示>4 . LED显示<a hidden class=anchor aria-hidden=true href=#4--led显示>#</a></h2><p><img alt=LED.png loading=lazy src=/blog/posts/2026/lanqiao_elec/LED.png></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c data-lang=c><span style=display:flex><span><span style=color:#66d9ef>void</span> <span style=color:#a6e22e>led_show</span>(<span style=color:#66d9ef>uint8_t</span> led, <span style=color:#66d9ef>uint8_t</span> mode)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>HAL_GPIO_WritePin</span>(GPIOD, GPIO_PIN_2, GPIO_PIN_SET);
+</span></span><span style=display:flex><span>	
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>if</span>(mode)
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>HAL_GPIO_WritePin</span>(GPIOC, GPIO_PIN_8<span style=color:#f92672>&lt;&lt;</span>(led<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>), GPIO_PIN_RESET);<span style=color:#75715e>//mode不等于0为开
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>	<span style=color:#66d9ef>else</span>
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>HAL_GPIO_WritePin</span>(GPIOC, GPIO_PIN_8<span style=color:#f92672>&lt;&lt;</span>(led<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>), GPIO_PIN_SET);
+</span></span><span style=display:flex><span>	
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>HAL_GPIO_WritePin</span>(GPIOD, GPIO_PIN_2, GPIO_PIN_RESET);
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>⭐LED显示时一定要注意把不需要的LED需要<strong>设置关闭状态</strong></p><h2 id=5-adc>5. ADC<a hidden class=anchor aria-hidden=true href=#5-adc>#</a></h2><blockquote><p>💡ADC最主要的注意点是要在mian.c中调用配置函数后，在fun.c中要写adc_read函数。（不要忘了adc采集值的数据类型是<strong>double</strong>!!!!!）</p></blockquote><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c data-lang=c><span style=display:flex><span>  <span style=color:#a6e22e>HAL_ADCEx_Calibration_Start</span>(<span style=color:#f92672>&amp;</span>hadc2, ADC_SINGLE_ENDED);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>HAL_ADCEx_Calibration_Start</span>(<span style=color:#f92672>&amp;</span>hadc1, ADC_SINGLE_ENDED);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>double</span> <span style=color:#a6e22e>adc_read</span>(ADC_HandleTypeDef <span style=color:#f92672>*</span>hadc)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>HAL_ADC_Start</span>(hadc);
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>uint16_t</span> value_adc <span style=color:#f92672>=</span> <span style=color:#a6e22e>HAL_ADC_GetValue</span>(hadc);
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>return</span> <span style=color:#ae81ff>3.3</span><span style=color:#f92672>*</span>value_adc<span style=color:#f92672>/</span><span style=color:#ae81ff>4096</span>;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h2 id=6-定时器输入捕获输出pwm和时钟>6. 定时器输入捕获、输出PWM和时钟<a hidden class=anchor aria-hidden=true href=#6-定时器输入捕获输出pwm和时钟>#</a></h2><blockquote><p>💡本题使用TIM2作为输入捕获、TIM17作为PWM输出、TIM3作为时钟。基本步骤为在main.c中调用配置函数，fun.c中编写回调函数（在CUBEMX中配置时要注意不要选择TIM7/8高级定时器）</p><ol><li>PWM模式下<strong>预分频系数PSC为800-1，自动重载值ARR为100-1</strong>（这样的好处在于STM32G431RBT6的主频为80MHz，分频下来为<strong>1ms/1kHz</strong>且<strong>占空比的值</strong>就为<strong>计数器CCR</strong>的值。（⭐不用配置中断）</li><li>输入捕获模式下<strong>预分频系数PSC为80-1，自动重载值ARR不用改</strong>，这样频率$f=1000000/(TIM->CCR1 +1)$，周期$T = 1000000/f$（✨<strong>记得CNT清零</strong>）（⭐配置中断）</li><li>计时器模式下<strong>预分频系数PSC为800-1，自动重载值ARR为100-1</strong>，这样计时单位为<strong>1ms</strong>（✨记得清零）（⭐配置中断）</li></ol></blockquote><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c data-lang=c><span style=display:flex><span><span style=color:#66d9ef>void</span> <span style=color:#a6e22e>HAL_TIM_IC_CaptureCallback</span>(TIM_HandleTypeDef <span style=color:#f92672>*</span>htim)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span>(htim <span style=color:#f92672>-&gt;</span> Instance <span style=color:#f92672>==</span> TIM2)
+</span></span><span style=display:flex><span>	{
+</span></span><span style=display:flex><span>		fre_R40 <span style=color:#f92672>=</span> <span style=color:#ae81ff>1000000</span><span style=color:#f92672>/</span>(TIM2 <span style=color:#f92672>-&gt;</span> CCR1<span style=color:#f92672>+</span><span style=color:#ae81ff>1</span>);
+</span></span><span style=display:flex><span>		TIM2 <span style=color:#f92672>-&gt;</span> CNT <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>void</span> <span style=color:#a6e22e>HAL_TIM_PeriodElapsedCallback</span>(TIM_HandleTypeDef <span style=color:#f92672>*</span>htim)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>	    <span style=color:#66d9ef>if</span>(htim <span style=color:#f92672>-&gt;</span> Instance <span style=color:#f92672>==</span> TIM3)
+</span></span><span style=display:flex><span>	{
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>if</span>(<span style=color:#f92672>++</span>time_clock[<span style=color:#ae81ff>2</span>]<span style=color:#f92672>&gt;</span><span style=color:#ae81ff>59</span>)
+</span></span><span style=display:flex><span>		{
+</span></span><span style=display:flex><span>			time_clock[<span style=color:#ae81ff>2</span>]<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>			<span style=color:#66d9ef>if</span>(<span style=color:#f92672>++</span>time_clock[<span style=color:#ae81ff>1</span>]<span style=color:#f92672>&gt;</span><span style=color:#ae81ff>59</span>)
+</span></span><span style=display:flex><span>			{
+</span></span><span style=display:flex><span>				time_clock[<span style=color:#ae81ff>1</span>]<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>				<span style=color:#66d9ef>if</span>(<span style=color:#f92672>++</span>time_clock[<span style=color:#ae81ff>0</span>]<span style=color:#f92672>&gt;</span><span style=color:#ae81ff>999</span>)
+</span></span><span style=display:flex><span>				{
+</span></span><span style=display:flex><span>					time_clock[<span style=color:#ae81ff>0</span>]<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>					time_clock[<span style=color:#ae81ff>1</span>]<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>					time_clock[<span style=color:#ae81ff>2</span>]<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>				}
+</span></span><span style=display:flex><span>			}
+</span></span><span style=display:flex><span>		}
+</span></span><span style=display:flex><span>			
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h2 id=7-eprom>7. EPROM<a hidden class=anchor aria-hidden=true href=#7-eprom>#</a></h2><p>AT24C02 就是一种常用的 I2C 接口 EEPROM 芯片（电可擦除可编程只读存储器）。</p><p>AT24C02 的关键参数：</p><ul><li>容量：<strong>2Kbit = 256 字节</strong></li><li>地址范围：<strong>0x00 ~ 0xFF</strong>（一共 256 个地址）</li><li>通信接口：<strong>I2C</strong></li><li>功能：存密码、存参数、存设置，掉电不丢</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-C data-lang=C><span style=display:flex><span><span style=color:#a6e22e>eeprom_wirte</span>(<span style=color:#ae81ff>0x00</span>, passwd_input[<span style=color:#ae81ff>0</span>]);<span style=color:#75715e>//向0x00内存地址写入值
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>passwd_right[<span style=color:#ae81ff>0</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>eeprom_read</span>(<span style=color:#ae81ff>0x00</span>);<span style=color:#75715e>//从0x00内存读出存储值
+</span></span></span></code></pre></div><blockquote><p>⭐工程配置上需要导入i2c_hal.c和i2c_hal.h。
+这两个函数<strong>需要自己实现</strong>（在i2c_hal.c中编写、i2c_hal.h中声明），且pass_right数组需要在bsp_system头文件中<strong>外部声明</strong></p></blockquote><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-C data-lang=C><span style=display:flex><span><span style=color:#75715e>//
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>void</span> <span style=color:#a6e22e>eeprom_wirte</span>(<span style=color:#66d9ef>uint8_t</span> address, <span style=color:#66d9ef>uint8_t</span> data)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>I2CStart</span>();
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>I2CSendByte</span>(<span style=color:#ae81ff>0xa0</span>);
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>I2CWaitAck</span>();
+</span></span><span style=display:flex><span>	
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>I2CSendByte</span>(address);
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>I2CWaitAck</span>();
+</span></span><span style=display:flex><span>	
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>I2CSendByte</span>(data);
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>I2CWaitAck</span>();
+</span></span><span style=display:flex><span>	
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>I2CStop</span>();
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>HAL_Delay</span>(<span style=color:#ae81ff>10</span>);
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>//
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>uint8_t</span>  <span style=color:#a6e22e>eeprom_read</span>(<span style=color:#66d9ef>uint8_t</span> address)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>I2CStart</span>();
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>I2CSendByte</span>(<span style=color:#ae81ff>0xa0</span>);
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>I2CWaitAck</span>();
+</span></span><span style=display:flex><span>	
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>I2CSendByte</span>(address);
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>I2CWaitAck</span>();
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>I2CStop</span>();
+</span></span><span style=display:flex><span>	
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>I2CStart</span>();
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>I2CSendByte</span>(<span style=color:#ae81ff>0xa1</span>);
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>I2CWaitAck</span>();
+</span></span><span style=display:flex><span>	
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>uint8_t</span> data <span style=color:#f92672>=</span> <span style=color:#a6e22e>I2CReceiveByte</span>();
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>I2CSendNotAck</span>();
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>I2CStop</span>();
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>return</span> data;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h2 id=8-i2c>8. I2C<a hidden class=anchor aria-hidden=true href=#8-i2c>#</a></h2><blockquote><p>⭐16届模拟题1找了很久的问题：为什么工程代码与满分工程一模一样，<strong>但是就是页面跳转不了</strong>（输入正确密码下），最后才发现是<strong>CubeMX中I2C的SCL和SDA（PB6和PB7）引脚没有配置</strong>🤣细节决定成败。</p></blockquote><h2 id=9-uart>9. UART<a hidden class=anchor aria-hidden=true href=#9-uart>#</a></h2><blockquote><p>要实现串口通信，我们选择UART，在<strong>CubeMX配置中，设置异步模式和题目规定的波特率并开启中断</strong>，USATR1_TX和RX分别对应引脚<strong>PA9、PA10</strong>。</p></blockquote><p>🤣🤣🤣<strong>波特率记得修改为9600!!!（CubeMX初始为115200）</strong></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-C data-lang=C><span style=display:flex><span><span style=color:#75715e>//main.c中的配置函数
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#a6e22e>HAL_UART_Receive_IT</span>(<span style=color:#f92672>&amp;</span>huart1, <span style=color:#f92672>&amp;</span>uart_data, <span style=color:#ae81ff>1</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>//fun.c中的串口处理函数和接收回调函数
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>char</span> uart_str[<span style=color:#ae81ff>4</span>];
+</span></span><span style=display:flex><span><span style=color:#66d9ef>uint8_t</span> uart_int[<span style=color:#ae81ff>3</span>];
+</span></span><span style=display:flex><span><span style=color:#66d9ef>uint8_t</span> uart_indax;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>uint8_t</span> uart_data;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>uint8_t</span> uart_flag;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>void</span> <span style=color:#a6e22e>uart_pros</span>(<span style=color:#66d9ef>void</span>)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>if</span>(uart_flag)
+</span></span><span style=display:flex><span>	{
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>if</span>(TIM4<span style=color:#f92672>-&gt;</span>CNT<span style=color:#f92672>&gt;</span><span style=color:#ae81ff>15</span>)
+</span></span><span style=display:flex><span>		{
+</span></span><span style=display:flex><span>			<span style=color:#66d9ef>if</span>(uart_indax <span style=color:#f92672>==</span> <span style=color:#ae81ff>2</span>)
+</span></span><span style=display:flex><span>			{
+</span></span><span style=display:flex><span>				<span style=color:#66d9ef>if</span>(uart_int[<span style=color:#ae81ff>0</span>]<span style=color:#f92672>==</span><span style=color:#e6db74>&#39;B&#39;</span><span style=color:#f92672>&amp;&amp;</span>uart_int[<span style=color:#ae81ff>1</span>]<span style=color:#f92672>==</span><span style=color:#e6db74>&#39;1&#39;</span>)
+</span></span><span style=display:flex><span>				{
+</span></span><span style=display:flex><span>					<span style=color:#66d9ef>if</span>(<span style=color:#f92672>!</span>lcd_mode)
+</span></span><span style=display:flex><span>					{
+</span></span><span style=display:flex><span>						auto_hand <span style=color:#f92672>^=</span> <span style=color:#ae81ff>1</span>;
+</span></span><span style=display:flex><span>						time_count <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>					}
+</span></span><span style=display:flex><span>					<span style=color:#66d9ef>else</span> lcd_mode <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>				}
+</span></span><span style=display:flex><span>				<span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span>(uart_int[<span style=color:#ae81ff>0</span>]<span style=color:#f92672>==</span><span style=color:#e6db74>&#39;B&#39;</span><span style=color:#f92672>&amp;&amp;</span>uart_int[<span style=color:#ae81ff>1</span>]<span style=color:#f92672>==</span><span style=color:#e6db74>&#39;2&#39;</span>)
+</span></span><span style=display:flex><span>				{
+</span></span><span style=display:flex><span>					<span style=color:#66d9ef>if</span>(<span style=color:#f92672>!</span>lcd_mode)
+</span></span><span style=display:flex><span>					{
+</span></span><span style=display:flex><span>						<span style=color:#66d9ef>if</span>(auto_hand)
+</span></span><span style=display:flex><span>						{
+</span></span><span style=display:flex><span>							<span style=color:#66d9ef>if</span>(<span style=color:#f92672>++</span>gear_flag <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>3</span>) gear_flag <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>;
+</span></span><span style=display:flex><span>						}
+</span></span><span style=display:flex><span>						time_count <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>					}
+</span></span><span style=display:flex><span>					<span style=color:#66d9ef>else</span> lcd_mode <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>				}
+</span></span><span style=display:flex><span>				<span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span>(uart_int[<span style=color:#ae81ff>0</span>]<span style=color:#f92672>==</span><span style=color:#e6db74>&#39;B&#39;</span><span style=color:#f92672>&amp;&amp;</span>uart_int[<span style=color:#ae81ff>1</span>]<span style=color:#f92672>==</span><span style=color:#e6db74>&#39;3&#39;</span>)
+</span></span><span style=display:flex><span>				{
+</span></span><span style=display:flex><span>					<span style=color:#66d9ef>if</span>(<span style=color:#f92672>!</span>lcd_mode)
+</span></span><span style=display:flex><span>					{
+</span></span><span style=display:flex><span>						<span style=color:#66d9ef>if</span>(auto_hand)
+</span></span><span style=display:flex><span>						{
+</span></span><span style=display:flex><span>							<span style=color:#66d9ef>if</span>(<span style=color:#f92672>--</span>gear_flag <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>1</span>) gear_flag <span style=color:#f92672>=</span> <span style=color:#ae81ff>3</span>;
+</span></span><span style=display:flex><span>						}
+</span></span><span style=display:flex><span>						time_count <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>					}
+</span></span><span style=display:flex><span>					<span style=color:#66d9ef>else</span> lcd_mode <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>				}
+</span></span><span style=display:flex><span>				<span style=color:#66d9ef>else</span>
+</span></span><span style=display:flex><span>				{
+</span></span><span style=display:flex><span>					<span style=color:#a6e22e>sprintf</span>(uart_str, <span style=color:#e6db74>&#34;NULL&#34;</span>);
+</span></span><span style=display:flex><span>					<span style=color:#a6e22e>HAL_UART_Transmit</span>(<span style=color:#f92672>&amp;</span>huart1, (<span style=color:#66d9ef>uint8_t</span> <span style=color:#f92672>*</span>)uart_str, <span style=color:#ae81ff>4</span>, <span style=color:#ae81ff>50</span>);
+</span></span><span style=display:flex><span>					<span style=color:#75715e>//以阻塞方式发送 `uart_str` 数组里的 4 个字节数据，如果 50ms 内没发送完成，就停止并返回错误。
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>				}
+</span></span><span style=display:flex><span>			}
+</span></span><span style=display:flex><span>			<span style=color:#66d9ef>else</span>
+</span></span><span style=display:flex><span>			{
+</span></span><span style=display:flex><span>				<span style=color:#a6e22e>sprintf</span>(uart_str, <span style=color:#e6db74>&#34;NULL&#34;</span>);
+</span></span><span style=display:flex><span>				<span style=color:#a6e22e>HAL_UART_Transmit</span>(<span style=color:#f92672>&amp;</span>huart1, (<span style=color:#66d9ef>uint8_t</span> <span style=color:#f92672>*</span>)uart_str, <span style=color:#ae81ff>4</span>, <span style=color:#ae81ff>50</span>);
+</span></span><span style=display:flex><span>			}
+</span></span><span style=display:flex><span>			<span style=color:#66d9ef>for</span>(<span style=color:#66d9ef>int</span> i<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>;i<span style=color:#f92672>&lt;</span>uart_indax;i<span style=color:#f92672>++</span>) uart_str[i] <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>			uart_flag <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>			uart_indax <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>		}
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>void</span> <span style=color:#a6e22e>HAL_UART_RxCpltCallback</span>(UART_HandleTypeDef <span style=color:#f92672>*</span>huart)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>if</span>(huart<span style=color:#f92672>-&gt;</span>Instance <span style=color:#f92672>==</span> USART1)
+</span></span><span style=display:flex><span>	{
+</span></span><span style=display:flex><span>		TIM4<span style=color:#f92672>-&gt;</span>CNT <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>		uart_flag <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>;
+</span></span><span style=display:flex><span>		time_count <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>		led_flag <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>;
+</span></span><span style=display:flex><span>		uart_int[uart_indax<span style=color:#f92672>++</span>] <span style=color:#f92672>=</span> uart_data;
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>HAL_UART_Receive_IT</span>(huart, <span style=color:#f92672>&amp;</span>uart_data, <span style=color:#ae81ff>1</span>);
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><blockquote><p>⭐⭐⭐其中只有TIM3当作定时器（配置PSC = 800-1，ARR为100-1）来用（需要在3s和5s时执行全局中断；而TIM4只是用于串口的<strong>串口超时计数器</strong>（计数寄存器一直加，一有数据发送就清零），不用<strong>设置中断</strong>。（<strong>但是main.c中要写配置函数</strong>！（16_2m出现了问题））（配置PSC = 8000-1，ARR保持65535）
+🤣🤣🤣回调函数看好了是RX不是TX（找了很久为什么串口无效的原因）</p></blockquote><blockquote><p>⭐⭐⭐但如果想要发送串口的同时CPU也要工作去执行主循环（<strong>15届模拟1的导航</strong>），那我们需要引入非阻塞方式的DMA发送串口：</p></blockquote><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-C data-lang=C><span style=display:flex><span><span style=color:#75715e>//main.c中的配置函数
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#a6e22e>HAL_UARTEx_ReceiveToIdle_DMA</span>(<span style=color:#f92672>&amp;</span>huart1, (<span style=color:#66d9ef>uint8_t</span> <span style=color:#f92672>*</span>)uart_rx_str, UART_MAX);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>//fun.c中的回调函数和发送串口函数
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>char</span> uart_tx_str[UART_MAX];
+</span></span><span style=display:flex><span><span style=color:#66d9ef>char</span> uart_rx_str[UART_MAX];
+</span></span><span style=display:flex><span><span style=color:#66d9ef>uint8_t</span> uart_flag;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>sprintf</span>(uart_tx_str, <span style=color:#e6db74>&#34;Success</span><span style=color:#ae81ff>\r\n</span><span style=color:#e6db74>&#34;</span>);
+</span></span><span style=display:flex><span><span style=color:#a6e22e>HAL_UART_Transmit_DMA</span>(<span style=color:#f92672>&amp;</span>huart1, (<span style=color:#66d9ef>uint8_t</span> <span style=color:#f92672>*</span>)uart_tx_str, <span style=color:#a6e22e>strlen</span>(uart_tx_str));
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>void</span> <span style=color:#a6e22e>uart_proc</span>(<span style=color:#66d9ef>void</span>)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>if</span>(uart_flag)
+</span></span><span style=display:flex><span>	{
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>if</span>(<span style=color:#a6e22e>strncmp</span>(uart_rx_str, <span style=color:#e6db74>&#34;R37&#34;</span>, <span style=color:#ae81ff>3</span>) <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>)
+</span></span><span style=display:flex><span>		{
+</span></span><span style=display:flex><span>            <span style=color:#a6e22e>sprintf</span>(uart_tx_str, <span style=color:#e6db74>&#34;R37:%d,%d,%.1f%%&#34;</span>, cnt_R37, cnt_R37_OK, PR37);
+</span></span><span style=display:flex><span>		    <span style=color:#a6e22e>HAL_UART_Transmit_DMA</span>(<span style=color:#f92672>&amp;</span>huart1, (<span style=color:#66d9ef>uint8_t</span> <span style=color:#f92672>*</span>)uart_tx_str, <span style=color:#a6e22e>strlen</span>(uart_tx_str));
+</span></span><span style=display:flex><span>		}
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span>(<span style=color:#a6e22e>strncmp</span>(uart_rx_str, <span style=color:#e6db74>&#34;R38&#34;</span>, <span style=color:#ae81ff>3</span>) <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>)
+</span></span><span style=display:flex><span>		{
+</span></span><span style=display:flex><span>			<span style=color:#a6e22e>sprintf</span>(uart_tx_str, <span style=color:#e6db74>&#34;R38:%d,%d,%.1f%%&#34;</span>, cnt_R38, cnt_R38_Ok, PR38);
+</span></span><span style=display:flex><span>		    <span style=color:#a6e22e>HAL_UART_Transmit_DMA</span>(<span style=color:#f92672>&amp;</span>huart1, (<span style=color:#66d9ef>uint8_t</span> <span style=color:#f92672>*</span>)uart_tx_str, <span style=color:#a6e22e>strlen</span>(uart_tx_str));
+</span></span><span style=display:flex><span>		}
+</span></span><span style=display:flex><span>		uart_flag <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>memset</span>(uart_rx_str, <span style=color:#e6db74>&#39;\0&#39;</span>, UART_MAX);
+</span></span><span style=display:flex><span>	
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>void</span> <span style=color:#a6e22e>HAL_UARTEx_RxEventCallback</span>(UART_HandleTypeDef <span style=color:#f92672>*</span>huart, <span style=color:#66d9ef>uint16_t</span> Size)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>if</span>(huart <span style=color:#f92672>-&gt;</span> Instance <span style=color:#f92672>==</span> USART1)
+</span></span><span style=display:flex><span>	{
+</span></span><span style=display:flex><span>	    uart_rx_str[Size] <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;\0&#39;</span>;
+</span></span><span style=display:flex><span>		uart_flag <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>;
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>HAL_UARTEx_ReceiveToIdle_DMA</span>(huart, (<span style=color:#66d9ef>uint8_t</span> <span style=color:#f92672>*</span>)uart_rx_str, UART_MAX);
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// ⭐在bsp_system.h中需要定义和外部声明
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#75715e>#define UART_MAX 30
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>extern</span> <span style=color:#66d9ef>char</span> uart_rx_str[UART_MAX];
+</span></span></code></pre></div><p>⭐这一道题也让我学会一个简化代码和思路的方法：<strong>汽车导航的串口不仅是向串口输入字符后的直接输出，还有再执行一定操作（如案件等）才返回的串口字符</strong>，那我们为什么不可以用<strong>隔离法</strong>呢，将一个逻辑链切成两半：把需要输入字符的操作放在串口函数中，其它逻辑操作串口输出放在其他函数。</p><h2 id=9-滴答定时器>9. 滴答定时器<a hidden class=anchor aria-hidden=true href=#9-滴答定时器>#</a></h2><p>⭐在做16届模拟题1的时候，发现自己通过用<strong>定时器TIM4</strong>计时烧录之后出现黑屏死机（而满分工程中调用的<strong>滴答定时器</strong>却不会），后来发现<strong>两个原因</strong>：</p><ul><li>用定时器模拟内部时钟CubeMX配置时优先级为15（最低）❌（<strong>但是最好不要修改这个优先级，因为修改为最高优先级之后会影响其它输入捕获中断的嵌套</strong>）</li><li>定时器会影响系统运行的时序引起拥塞 ❌</li></ul><p>故我们可以使用内部滴答定时器（不占用硬件资源且运行效率高）：
+⭐<strong>编写时要把系统原来定义好的同名函数注释掉，避免重复定义</strong></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-C data-lang=C><span style=display:flex><span><span style=color:#66d9ef>void</span> <span style=color:#a6e22e>SysTick_Handler</span>(<span style=color:#66d9ef>void</span>)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  <span style=color:#75715e>/* USER CODE BEGIN SysTick_IRQn 0 */</span>
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>if</span>(time_flag) time_3s<span style=color:#f92672>++</span>;
+</span></span><span style=display:flex><span>  <span style=color:#75715e>/* USER CODE END SysTick_IRQn 0 */</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>HAL_IncTick</span>();
+</span></span><span style=display:flex><span>  <span style=color:#75715e>/* USER CODE BEGIN SysTick_IRQn 1 */</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>/* USER CODE END SysTick_IRQn 1 */</span>
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span><span style=color:#66d9ef>void</span> <span style=color:#a6e22e>SysTick_Handler</span>(<span style=color:#66d9ef>void</span>)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  <span style=color:#75715e>/* USER CODE BEGIN SysTick_IRQn 0 */</span>
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>if</span>(N_direction<span style=color:#f92672>!=</span><span style=color:#ae81ff>0</span>)
+</span></span><span style=display:flex><span>	{
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>if</span>(<span style=color:#f92672>++</span>time_01s<span style=color:#f92672>&gt;</span><span style=color:#ae81ff>100</span>)
+</span></span><span style=display:flex><span>		{
+</span></span><span style=display:flex><span>			time_01s <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>			led_flag <span style=color:#f92672>^=</span> <span style=color:#ae81ff>1</span>;
+</span></span><span style=display:flex><span>		}
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>else</span> time_01s <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>  <span style=color:#75715e>/* USER CODE END SysTick_IRQn 0 */</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>HAL_IncTick</span>();
+</span></span><span style=display:flex><span>  <span style=color:#75715e>/* USER CODE BEGIN SysTick_IRQn 1 */</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>/* USER CODE END SysTick_IRQn 1 */</span>
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h1 id=比赛难点逻辑>⭐比赛难点逻辑<a hidden class=anchor aria-hidden=true href=#比赛难点逻辑>#</a></h1><h2 id=1-未退出数据修改复原逻辑>1. 未退出数据修改复原逻辑<a hidden class=anchor aria-hidden=true href=#1-未退出数据修改复原逻辑>#</a></h2><blockquote><p>💡这是在做16届模拟题3的时候遇到的最大的问题，这个应该是目前遇到的最难的逻辑。<strong>最后采用的方法是使用备用值。</strong></p></blockquote><p><img alt=16_3m.png loading=lazy src=/blog/posts/2026/lanqiao_elec/16_3m.png></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-C data-lang=C><span style=display:flex><span>	{
+</span></span><span style=display:flex><span>	    <span style=color:#a6e22e>sprintf</span>(text, <span style=color:#e6db74>&#34;        PARA        &#34;</span>);
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>LCD_DisplayStringLine</span>(Line1, (<span style=color:#66d9ef>uint8_t</span> <span style=color:#f92672>*</span>)text);
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>if</span>(IO_flag <span style=color:#f92672>==</span> <span style=color:#ae81ff>1</span> <span style=color:#f92672>&amp;&amp;</span> UL_flag <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>) <span style=color:#a6e22e>sprintf</span>(text, <span style=color:#e6db74>&#34;      High:%d       &#34;</span>, UL_alarm_temp);
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>else</span> <span style=color:#a6e22e>sprintf</span>(text, <span style=color:#e6db74>&#34;      High:%d       &#34;</span>, UL_alarm[<span style=color:#ae81ff>0</span>]);
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>LCD_DisplayStringLine</span>(Line3, (<span style=color:#66d9ef>uint8_t</span> <span style=color:#f92672>*</span>)text);
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span>(IO_flag <span style=color:#f92672>==</span> <span style=color:#ae81ff>1</span> <span style=color:#f92672>&amp;&amp;</span> UL_flag <span style=color:#f92672>==</span> <span style=color:#ae81ff>1</span>) <span style=color:#a6e22e>sprintf</span>(text, <span style=color:#e6db74>&#34;       Low:%d       &#34;</span>, UL_alarm_temp);
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>else</span> <span style=color:#a6e22e>sprintf</span>(text, <span style=color:#e6db74>&#34;       Low:%d       &#34;</span>, UL_alarm[<span style=color:#ae81ff>1</span>]);
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>LCD_DisplayStringLine</span>(Line4, (<span style=color:#66d9ef>uint8_t</span> <span style=color:#f92672>*</span>)text);
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>	
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>if</span>(<span style=color:#f92672>!</span>B1_data <span style=color:#f92672>&amp;</span> B1_last)
+</span></span><span style=display:flex><span>	{
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>if</span>(<span style=color:#f92672>++</span>lcd_mode <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>2</span>) lcd_mode <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>if</span>(lcd_mode <span style=color:#f92672>==</span> <span style=color:#ae81ff>2</span>)
+</span></span><span style=display:flex><span>		{
+</span></span><span style=display:flex><span>			UL_alarm_temp <span style=color:#f92672>=</span> UL_alarm[UL_flag]; <span style=color:#75715e>//每次进入界面2，先存储当前的值
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>			UL_flag <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>			IO_flag <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>			
+</span></span><span style=display:flex><span>		}
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>	
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>if</span>(lcd_mode <span style=color:#f92672>==</span> <span style=color:#ae81ff>2</span>)
+</span></span><span style=display:flex><span>	{
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>if</span>(<span style=color:#f92672>!</span>B2_data <span style=color:#f92672>&amp;</span> B2_last)
+</span></span><span style=display:flex><span>		{
+</span></span><span style=display:flex><span>			UL_flag <span style=color:#f92672>^=</span> <span style=color:#ae81ff>1</span>;
+</span></span><span style=display:flex><span>		}	
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>if</span>(<span style=color:#f92672>!</span>B3_data <span style=color:#f92672>&amp;</span> B3_last)
+</span></span><span style=display:flex><span>		{
+</span></span><span style=display:flex><span>	        <span style=color:#66d9ef>if</span>(IO_flag <span style=color:#f92672>==</span> <span style=color:#ae81ff>1</span>)  <span style=color:#75715e>//如果在修改状态，那么就赋值为原来的
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>            {
+</span></span><span style=display:flex><span>                 UL_alarm[UL_flag] <span style=color:#f92672>=</span> UL_alarm_temp;
+</span></span><span style=display:flex><span>            }
+</span></span><span style=display:flex><span>			IO_flag <span style=color:#f92672>^=</span> <span style=color:#ae81ff>1</span>;
+</span></span><span style=display:flex><span>		}	
+</span></span><span style=display:flex><span>		
+</span></span><span style=display:flex><span>	}
+</span></span></code></pre></div><h2 id=2-两种最大最小记录逻辑>2. 两种最大最小记录逻辑<a hidden class=anchor aria-hidden=true href=#2-两种最大最小记录逻辑>#</a></h2><p><img alt=1.png loading=lazy src=/blog/posts/2026/lanqiao_elec/1.png></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-C data-lang=C><span style=display:flex><span>	<span style=color:#66d9ef>float</span> rate_min_last <span style=color:#f92672>=</span> <span style=color:#ae81ff>300</span>;
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>float</span> rate_max_last <span style=color:#f92672>=</span> <span style=color:#ae81ff>10</span>;
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>float</span> rate_max;
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>float</span> rate_min;
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>if</span>(rate <span style=color:#f92672>&gt;</span> rate_max_last) rate_max <span style=color:#f92672>=</span> rate;
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>if</span>(rate <span style=color:#f92672>&lt;</span> rate_min_last) rate_min <span style=color:#f92672>=</span> rate;
+</span></span><span style=display:flex><span>	rate_max_last <span style=color:#f92672>=</span> rate_max;
+</span></span><span style=display:flex><span>	rate_min_last <span style=color:#f92672>=</span> rate_min;
+</span></span></code></pre></div><p><img alt=2.png loading=lazy src=/blog/posts/2026/lanqiao_elec/2.png></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-C data-lang=C><span style=display:flex><span><span style=color:#66d9ef>if</span>(<span style=color:#f92672>!</span>PH_flag_B)<span style=color:#75715e>//运用一个标志位
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>	{
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>if</span>(free_B<span style=color:#f92672>&gt;</span>para_PH)
+</span></span><span style=display:flex><span>		{
+</span></span><span style=display:flex><span>			NHB<span style=color:#f92672>++</span>;
+</span></span><span style=display:flex><span>			PH_flag_B <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>;
+</span></span><span style=display:flex><span>		}
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>else</span>
+</span></span><span style=display:flex><span>	{
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>if</span>(free_B<span style=color:#f92672>&lt;=</span>para_PH) PH_flag_B <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>	}
+</span></span></code></pre></div><h2 id=3-长短多按逻辑>3. 长短/多按逻辑<a hidden class=anchor aria-hidden=true href=#3-长短多按逻辑>#</a></h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-C data-lang=C><span style=display:flex><span>	<span style=color:#66d9ef>if</span>(lcd_mode <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>)<span style=color:#75715e>//监控界面（长短按）
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>	{
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>if</span>(<span style=color:#f92672>!</span>B2_data<span style=color:#f92672>&amp;</span>B2_last)
+</span></span><span style=display:flex><span>		{
+</span></span><span style=display:flex><span>			time_2s <span style=color:#f92672>=</span> uwTick;
+</span></span><span style=display:flex><span>		}
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>if</span>(B2_data<span style=color:#f92672>&amp;!</span>B2_last)
+</span></span><span style=display:flex><span>		{
+</span></span><span style=display:flex><span>			<span style=color:#66d9ef>if</span>(uwTick <span style=color:#f92672>-</span> time_2s <span style=color:#f92672>&gt;=</span> <span style=color:#ae81ff>2000</span>)
+</span></span><span style=display:flex><span>			{
+</span></span><span style=display:flex><span>				<span style=color:#a6e22e>memset</span>(time_clock, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>3</span>);
+</span></span><span style=display:flex><span>			}
+</span></span><span style=display:flex><span>			<span style=color:#66d9ef>else</span>
+</span></span><span style=display:flex><span>			{
+</span></span><span style=display:flex><span>				ST_flag <span style=color:#f92672>^=</span> <span style=color:#ae81ff>1</span>;
+</span></span><span style=display:flex><span>			}
+</span></span><span style=display:flex><span>		}
+</span></span><span style=display:flex><span>		
+</span></span><span style=display:flex><span>		
+</span></span><span style=display:flex><span>	}
+</span></span></code></pre></div><h1 id=总结>⭐总结<a hidden class=anchor aria-hidden=true href=#总结>#</a></h1><p><strong>对自己充满坚定信念、有自信，比赛加油！（20260411）</strong></p></div><footer class=post-footer><ul class=post-tags><li><a href=https://DamonFAN3964.github.io/blog/tags/%E5%A4%A7%E4%B8%89%E4%B8%8B/>大三下</a></li><li><a href=https://DamonFAN3964.github.io/blog/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/>嵌入式</a></li><li><a href=https://DamonFAN3964.github.io/blog/tags/%E7%A1%AC%E4%BB%B6/>硬件</a></li></ul><nav class=paginav><a class=prev href=https://DamonFAN3964.github.io/blog/posts/2026/20260309/><span class=title>« Prev</span><br><span>回看20250726</span>
+</a><a class=next href=https://DamonFAN3964.github.io/blog/posts/2026/lanqiao_coding/><span class=title>Next »</span><br><span>算法Learing</span></a></nav><ul class=share-buttons><li><a target=_blank rel="noopener noreferrer" aria-label="share 嵌入式Learing on x" href="https://x.com/intent/tweet/?text=%e5%b5%8c%e5%85%a5%e5%bc%8fLearing&amp;url=https%3a%2f%2fDamonFAN3964.github.io%2fblog%2fposts%2f2026%2flanqiao_elec%2f&amp;hashtags=%e5%a4%a7%e4%b8%89%e4%b8%8b%2c%e5%b5%8c%e5%85%a5%e5%bc%8f%2c%e7%a1%ac%e4%bb%b6"><svg viewBox="0 0 512 512" height="30" width="30" fill="currentcolor"><path d="M512 62.554V449.446C512 483.97 483.97 512 449.446 512H62.554C28.03 512 0 483.97.0 449.446V62.554C0 28.03 28.029.0 62.554.0H449.446C483.971.0 512 28.03 512 62.554zM269.951 190.75 182.567 75.216H56L207.216 272.95 63.9 436.783h61.366L235.9 310.383l96.667 126.4H456L298.367 228.367l134-153.151H371.033zM127.633 110h36.468l219.38 290.065H349.5z"/></svg></a></li><li><a target=_blank rel="noopener noreferrer" aria-label="share 嵌入式Learing on reddit" href="https://reddit.com/submit?url=https%3a%2f%2fDamonFAN3964.github.io%2fblog%2fposts%2f2026%2flanqiao_elec%2f&title=%e5%b5%8c%e5%85%a5%e5%bc%8fLearing"><svg viewBox="0 0 512 512" height="30" width="30" fill="currentcolor"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM446 265.638c0-22.964-18.616-41.58-41.58-41.58-11.211.0-21.361 4.457-28.841 11.666-28.424-20.508-67.586-33.757-111.204-35.278l18.941-89.121 61.884 13.157c.756 15.734 13.642 28.29 29.56 28.29 16.407.0 29.706-13.299 29.706-29.701.0-16.403-13.299-29.702-29.706-29.702-11.666.0-21.657 6.792-26.515 16.578l-69.105-14.69c-1.922-.418-3.939-.042-5.585 1.036-1.658 1.073-2.811 2.761-3.224 4.686l-21.152 99.438c-44.258 1.228-84.046 14.494-112.837 35.232-7.468-7.164-17.589-11.591-28.757-11.591-22.965.0-41.585 18.616-41.585 41.58.0 16.896 10.095 31.41 24.568 37.918-.639 4.135-.99 8.328-.99 12.576.0 63.977 74.469 115.836 166.33 115.836s166.334-51.859 166.334-115.836c0-4.218-.347-8.387-.977-12.493 14.564-6.47 24.735-21.034 24.735-38.001zM326.526 373.831c-20.27 20.241-59.115 21.816-70.534 21.816-11.428.0-50.277-1.575-70.522-21.82-3.007-3.008-3.007-7.882.0-10.889 3.003-2.999 7.882-3.003 10.885.0 12.777 12.781 40.11 17.317 59.637 17.317 19.522.0 46.86-4.536 59.657-17.321 3.016-2.999 7.886-2.995 10.885.008 3.008 3.011 3.003 7.882-.008 10.889zm-5.23-48.781c-16.373.0-29.701-13.324-29.701-29.698.0-16.381 13.328-29.714 29.701-29.714 16.378.0 29.706 13.333 29.706 29.714.0 16.374-13.328 29.698-29.706 29.698zM160.91 295.348c0-16.381 13.328-29.71 29.714-29.71 16.369.0 29.689 13.329 29.689 29.71.0 16.373-13.32 29.693-29.689 29.693-16.386.0-29.714-13.32-29.714-29.693z"/></svg></a></li><li><a target=_blank rel="noopener noreferrer" aria-label="share 嵌入式Learing on facebook" href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fDamonFAN3964.github.io%2fblog%2fposts%2f2026%2flanqiao_elec%2f"><svg viewBox="0 0 512 512" height="30" width="30" fill="currentcolor"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H342.978V319.085h66.6l12.672-82.621h-79.272v-53.617c0-22.603 11.073-44.636 46.58-44.636H425.6v-70.34s-32.71-5.582-63.982-5.582c-65.288.0-107.96 39.569-107.96 111.204v62.971h-72.573v82.621h72.573V512h-191.104c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892z"/></svg></a></li><li><a target=_blank rel="noopener noreferrer" aria-label="share 嵌入式Learing on telegram" href="https://telegram.me/share/url?text=%e5%b5%8c%e5%85%a5%e5%bc%8fLearing&amp;url=https%3a%2f%2fDamonFAN3964.github.io%2fblog%2fposts%2f2026%2flanqiao_elec%2f"><svg viewBox="2 2 28 28" height="30" width="30" fill="currentcolor"><path d="M26.49 29.86H5.5a3.37 3.37.0 01-2.47-1 3.35 3.35.0 01-1-2.47V5.48A3.36 3.36.0 013 3 3.37 3.37.0 015.5 2h21A3.38 3.38.0 0129 3a3.36 3.36.0 011 2.46V26.37a3.35 3.35.0 01-1 2.47 3.38 3.38.0 01-2.51 1.02zm-5.38-6.71a.79.79.0 00.85-.66L24.73 9.24a.55.55.0 00-.18-.46.62.62.0 00-.41-.17q-.08.0-16.53 6.11a.59.59.0 00-.41.59.57.57.0 00.43.52l4 1.24 1.61 4.83a.62.62.0 00.63.43.56.56.0 00.4-.17L16.54 20l4.09 3A.9.9.0 0021.11 23.15zM13.8 20.71l-1.21-4q8.72-5.55 8.78-5.55c.15.0.23.0.23.16a.18.18.0 010 .06s-2.51 2.3-7.52 6.8z"/></svg></a></li></ul></footer></article></main><footer class=footer><span>&copy; 2026 <a href=https://DamonFAN3964.github.io/blog/>Damon不呆萌</a></span> ·
+<span>Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+        <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerHTML="copy";function s(){t.innerHTML="copied!",setTimeout(()=>{t.innerHTML="copy"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script></body></html>
